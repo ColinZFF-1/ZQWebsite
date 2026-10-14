@@ -24,7 +24,7 @@
 
   /* 案例媒体：键为案例编号 1-4，填 image 或 video（相对 dist/ 的路径）；留空显示占位。
      推荐：assets/cases/case-0N.webp，1600×1000（16:10）。加载失败自动回退占位。 */
-  const CASE_MEDIA={1:{image:'',video:''},2:{image:'',video:''},3:{image:'',video:''},4:{image:'',video:''}};
+  const CASE_MEDIA={1:{image:'assets/cases/case-01.webp',video:''},2:{image:'assets/cases/case-02.webp',video:''},3:{image:'assets/cases/case-03.webp',video:''},4:{image:'assets/cases/case-04.webp',video:''}};
   $$('.case-card').forEach(card=>{const m=$('.case-media',card),c=CASE_MEDIA[card.dataset.case]||{};const img=m.dataset.image||c.image,vid=m.dataset.video||c.video;
     let el;if(vid){el=document.createElement('video');Object.assign(el,{muted:true,loop:true,playsInline:true,autoplay:true,preload:'metadata'});el.src=vid;if(img)el.poster=img;}
     else if(img){el=document.createElement('img');el.src=img;el.loading='lazy';el.alt=$('h3',card).textContent;}

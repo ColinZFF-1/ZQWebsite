@@ -128,3 +128,4 @@ a{color:inherit;text-decoration:none}ul,ol{list-style:none}
 .engage .kicker{margin-bottom:14px}
 .pstep.hot{box-shadow:0 0 0 1px rgba(255,210,122,.45),0 22px 60px -16px rgba(255,210,122,.7);background:rgba(78,58,138,.6)}
 @media (min-width:901px){.proc{padding-top:clamp(64px,10vh,96px)}.pstep{min-height:clamp(150px,22vh,210px);display:flex;flex-direction:column;justify-content:flex-end}.pnum{font-size:clamp(34px,3vw,46px);margin-bottom:auto}}
+.case-metric span{white-space:nowrap}@media (max-width:900px){.case-metric{flex-wrap:wrap;gap:2px 6px}}

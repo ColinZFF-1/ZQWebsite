@@ -1,0 +1,16 @@
+Use case: logo-brand.
+Create a refined logo exploration board for “昭桥智能” / “ZHAOQIAO” based on the user's hand sketch. Image 1 is the user's structural sketch; Image 2 is the previous curve reference for mood only. Do not copy the previous ugly logo.
+
+The key correction is mandatory:
+- The single four-point star belongs directly above the crown of the curved A, functioning as the dot of a lowercase i.
+- The i stem must NOT appear as an obvious separate upright pillar or blue vertical bar in the center.
+- Make the i stem subtle and integrated: choose one of these controlled solutions per panel—an inner curved stroke nested inside the A, a short tapered stem that shares the A's negative space, a narrow negative-space cut, or a stem that grows naturally from the sweeping trajectory. It must read as i only after looking, not dominate the icon.
+- The A remains the main recognizable silhouette: one soft rounded apex, two flowing legs, open counter. The star is a dot above the apex, close enough to read as part of the letter, not a distant ornament.
+- Use one continuous graceful trajectory that comes from the lower-right, sweeps through the lower-left, then rises toward the upper-right as a connecting gesture. It may pass through the A's lower/middle area, but it must not form a planetary ring and must not compete with the A. No star at the trajectory endpoint; there is only the one star above the A.
+- The trajectory should be a secondary line, thinner and softer than the A. Endpoints are deliberate, not long hairline tails.
+
+Output a clean white landscape presentation board in a 2x2 grid with four genuinely different refinements of this same idea. Label only 01–04 and small names: “内嵌 i”, “负形 i”, “轨迹 i”, “柔性 i”. Each panel shows the isolated symbol large and below it the exact dark graphite Chinese wordmark “昭桥智能” and exact uppercase “ZHAOQIAO”. Also show a tiny solid-black silhouette in one corner of each panel. Do not add explanatory paragraphs, mockup objects, watermarks or decorative backgrounds.
+
+Visual tone: modern enterprise AI, connected to real life, young and warm, friendly, confident, professional. Use flat, crisp vector-like fills with a restrained muted blue, dusty rose and soft mauve palette, or one-color graphite where it helps compare shape. Slight color transition inside the A or trajectory is allowed but no glow, haze, lighting, shadow, metallic effect or 3D.
+
+The design must be cleaner and more compact than the previous attempt. The A should not look like an architectural bridge. Do not include sun, solar disk, sunrise or radiating light; no Japanese, zen or traditional Japanese motifs; no literal traditional arched bridge, wooden bridge or bridge pier; no duplicate stars; no standalone central I pillar; no planet orbit; no arrows; no invented English words. Keep exact text and clear legibility.

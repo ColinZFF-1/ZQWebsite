@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">贤弟AI logo</title>
+  <desc id="desc">Two interlocking workflow paths form an X and a forward arrow, next to the 贤弟AI wordmark.</desc>
+  <rect width="1200" height="420" rx="28" fill="#0F172A"/>
+  <g transform="translate(72 82)">
+    <path d="M20 24 L172 176" stroke="#2563EB" stroke-width="64" stroke-linecap="round"/>
+    <path d="M172 24 L20 176" stroke="#FFB547" stroke-width="64" stroke-linecap="round"/>
+    <path d="M172 176 L224 176" stroke="#8BE0C0" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="247" cy="176" r="18" fill="#8BE0C0"/>
+    <circle cx="99" cy="100" r="7" fill="#F8FAFC" opacity=".9"/>
+  </g>
+  <text x="390" y="205" fill="#F8FAFC" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="88" font-weight="700" letter-spacing="2">贤弟AI</text>
+  <text x="396" y="272" fill="#CBD5E1" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="25" letter-spacing="5">把 AI 变成岗位动作</text>
+  <rect x="396" y="316" width="92" height="6" rx="3" fill="#2563EB"/>
+  <rect x="500" y="316" width="42" height="6" rx="3" fill="#FFB547"/>
+  <rect x="554" y="316" width="28" height="6" rx="3" fill="#8BE0C0"/>
+</svg>

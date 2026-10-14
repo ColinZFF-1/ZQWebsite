@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 440" role="img" aria-labelledby="title desc">
+  <title id="title">成事AI logo</title>
+  <desc id="desc">A blue modular block and orange forward path form a checkmark, symbolizing turning business problems into outcomes.</desc>
+  <rect width="1260" height="440" rx="30" fill="#111827"/>
+  <g transform="translate(76 86)">
+    <rect x="0" y="22" width="82" height="82" rx="17" transform="rotate(-45 41 63)" fill="#2855E8"/>
+    <path d="M104 124 L232 0" stroke="#FF7A45" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M214 0 L262 0 L262 48" fill="none" stroke="#FF7A45" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="410" y="200" fill="#F8F6F0" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="92" font-weight="700" letter-spacing="3">成事AI</text>
+  <text x="416" y="270" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="26" letter-spacing="8">CHENGSHI AI</text>
+  <text x="416" y="330" fill="#F8F6F0" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="25" letter-spacing="3">让 AI 接上你的生意</text>
+  <rect x="416" y="365" width="104" height="7" rx="3.5" fill="#2855E8"/>
+  <rect x="532" y="365" width="52" height="7" rx="3.5" fill="#FF7A45"/>
+  <rect x="596" y="365" width="34" height="7" rx="3.5" fill="#86E1C0"/>
+</svg>

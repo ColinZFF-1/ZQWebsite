@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1800" height="1200" viewBox="0 0 1800 1200">
+<defs>
+ <style><![CDATA[
+ text{font-family:'Noto Sans SC','Microsoft YaHei',sans-serif;fill:#1B1830}
+ .muted{fill:#6B6C7D}.white{fill:#fff}.aqua{fill:#63E6D3}.violet{fill:#6B5CFF}.coral{fill:#FF6B7A}
+ ]]></style>
+ <clipPath id="clipA"><rect x="58" y="205" width="856" height="450" rx="28"/></clipPath>
+ <linearGradient id="veil" x1="0" x2="1"><stop offset="0" stop-color="#F5F5FF" stop-opacity=".96"/><stop offset=".58" stop-color="#F5F5FF" stop-opacity=".26"/><stop offset="1" stop-color="#F5F5FF" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="1800" height="1200" fill="#F5F6FB"/>
+<!-- header -->
+<rect x="58" y="42" width="1684" height="86" rx="26" fill="#fff" stroke="#E5E6EF" stroke-width="2"/>
+<line x1="92" y1="85" x2="136" y2="85" stroke="#6B5CFF" stroke-width="8" stroke-linecap="round"/><line x1="112" y1="85" x2="112" y2="58" stroke="#FF6B7A" stroke-width="8" stroke-linecap="round"/>
+<text x="155" y="94" font-size="34" font-weight="700">昭桥智能</text><text x="365" y="92" font-size="21" class="muted" letter-spacing="3">ZHAOQIAO</text>
+<text x="1705" y="94" text-anchor="end" font-size="23" class="violet">让 AI 走进现实</text>
+<text x="72" y="170" font-size="18" class="muted">连接现实与 AI｜科技连接现实，年轻而有温度，专业且让人安心</text>
+<!-- A -->
+<rect x="58" y="205" width="856" height="450" rx="28" fill="#E9E8FF" stroke="#E5E6EF" stroke-width="2"/>
+<image x="58" y="205" width="856" height="450" preserveAspectRatio="xMidYMid slice" xlink:href="zhaoqiao-visual-hero-v1.png" clip-path="url(#clipA)"/>
+<rect x="58" y="205" width="520" height="450" fill="url(#veil)" clip-path="url(#clipA)"/>
+<rect x="82" y="229" width="136" height="34" rx="17" fill="#FF6B7A"/><text x="150" y="252" text-anchor="middle" font-size="17" class="white">AI下现场</text>
+<text x="96" y="370" font-size="47" font-weight="750">让 AI</text><text x="96" y="425" font-size="47" font-weight="750">走进现实</text>
+<text x="98" y="504" font-size="18">昭桥智能｜真实业务现场</text><text x="98" y="534" font-size="18">把问题讲清楚，把动作做出来</text>
+<rect x="98" y="587" width="75" height="38" rx="19" fill="#1B1830"/><text x="135" y="613" text-anchor="middle" font-size="15" class="white">▶ 01</text>
+<text x="884" y="630" text-anchor="end" font-size="13" class="muted" letter-spacing="2">VIDEO COVER / 16:9</text>
+<!-- B -->
+<rect x="944" y="205" width="798" height="450" rx="28" fill="#242444" stroke="#E5E6EF" stroke-width="2"/>
+<text x="988" y="274" font-size="18" class="aqua">企业 AI 方案</text>
+<text x="988" y="360" font-size="49" font-weight="750" class="white">连接现实</text><text x="988" y="417" font-size="49" font-weight="750" class="white">与 AI</text>
+<text x="990" y="500" font-size="18" fill="#D9D8EA">从认知培训到岗位落地</text><text x="990" y="531" font-size="18" fill="#D9D8EA">建立可复用的 AI 工作方式</text>
+<rect x="990" y="585" width="144" height="40" rx="20" fill="#6B5CFF"/><text x="1062" y="612" text-anchor="middle" font-size="15" class="white">方案封面</text><text x="1712" y="630" text-anchor="end" font-size="13" fill="#B8B8D0" letter-spacing="2">PROPOSAL / A4</text>
+<!-- bridge structure -->
+<rect x="1320" y="285" width="160" height="102" rx="18" fill="#3C3A6A" stroke="#8179FF" stroke-width="2"/><rect x="1515" y="320" width="137" height="129" rx="18" fill="#303052" stroke="#66E6D4" stroke-width="2"/>
+<circle cx="1540" cy="356" r="13" fill="#FF6B7A"/><line x1="1400" y1="385" x2="1515" y2="430" stroke="#63E6D3" stroke-width="5"/><line x1="1450" y1="350" x2="1600" y2="490" stroke="#6B5CFF" stroke-width="5"/><line x1="1500" y1="400" x2="1650" y2="470" stroke="#FF6B7A" stroke-width="5"/>
+<!-- C -->
+<rect x="58" y="685" width="856" height="450" rx="28" fill="#FFF8F1" stroke="#E5E6EF" stroke-width="2"/><rect x="86" y="713" width="24" height="394" rx="12" fill="#6B5CFF"/>
+<rect x="136" y="727" width="52" height="52" rx="16" fill="#6B5CFF"/><rect x="211" y="727" width="52" height="52" rx="16" fill="#FF6B7A"/><rect x="286" y="727" width="52" height="52" rx="16" fill="#63E6D3"/>
+<text x="136" y="828" font-size="22" class="coral">AI 岗位实战课</text><text x="136" y="908" font-size="42" font-weight="750">把一个工作</text><text x="136" y="958" font-size="42" font-weight="750">场景做成</text>
+<text x="138" y="1034" font-size="18" class="muted">从问题拆解 → 现场演练 → 交付模板</text><text x="138" y="1064" font-size="18" class="muted">昭桥智能｜让 AI 走进现实</text>
+<rect x="138" y="1080" width="116" height="34" rx="17" fill="#6B5CFF"/><text x="196" y="1103" text-anchor="middle" font-size="15" class="white">看懂</text><rect x="268" y="1080" width="116" height="34" rx="17" fill="#63E6D3"/><text x="326" y="1103" text-anchor="middle" font-size="15">会用</text><rect x="398" y="1080" width="116" height="34" rx="17" fill="#FF6B7A"/><text x="456" y="1103" text-anchor="middle" font-size="15" class="white">落地</text><text x="884" y="1110" text-anchor="end" font-size="13" class="muted" letter-spacing="2">COURSE POSTER / 3:4</text>
+<!-- D -->
+<rect x="944" y="685" width="798" height="450" rx="28" fill="#fff" stroke="#E5E6EF" stroke-width="2"/><rect x="974" y="715" width="738" height="390" rx="22" fill="#F4F2FF"/>
+<rect x="1002" y="748" width="132" height="34" rx="17" fill="#1B1830"/><text x="1068" y="771" text-anchor="middle" font-size="14" class="white">GEO · AI 可见度</text>
+<text x="1002" y="848" font-size="37" font-weight="750">企业如何</text><text x="1002" y="894" font-size="37" font-weight="750">被 AI 看见？</text><text x="1004" y="956" font-size="18" class="muted">把品牌、产品和知识</text><text x="1004" y="985" font-size="18" class="muted">整理成 AI 能理解的内容。</text>
+<!-- nodes -->
+<rect x="1392" y="755" width="92" height="70" rx="20" fill="#6B5CFF"/><rect x="1472" y="797" width="92" height="70" rx="20" fill="#FF6B7A"/><rect x="1416" y="879" width="92" height="70" rx="20" fill="#63E6D3"/><rect x="1512" y="913" width="92" height="70" rx="20" fill="#1B1830"/>
+<line x1="1484" y1="790" x2="1518" y2="798" stroke="#1B1830" stroke-width="5"/><line x1="1438" y1="825" x2="1462" y2="879" stroke="#1B1830" stroke-width="5"/><line x1="1518" y1="867" x2="1558" y2="913" stroke="#1B1830" stroke-width="5"/>
+<rect x="1002" y="1030" width="148" height="38" rx="19" fill="#FF6B7A"/><text x="1076" y="1055" text-anchor="middle" font-size="15" class="white">查看方法</text><text x="1712" y="1110" text-anchor="end" font-size="13" class="muted" letter-spacing="2">SOCIAL CARD / 3:4</text>
+<!-- footer -->
+<line x1="58" y1="1160" x2="1742" y2="1160" stroke="#DFE0EA" stroke-width="2"/><text x="58" y="1188" font-size="16" class="muted">视觉关键词</text>
+<rect x="210" y="1172" width="22" height="22" rx="8" fill="#6B5CFF"/><text x="244" y="1189" font-size="15">模块化连接</text><rect x="380" y="1172" width="22" height="22" rx="8" fill="#63E6D3"/><text x="414" y="1189" font-size="15">温和科技</text><rect x="550" y="1172" width="22" height="22" rx="8" fill="#FF6B7A"/><text x="584" y="1189" font-size="15">行动重点</text><rect x="720" y="1172" width="22" height="22" rx="8" fill="#242444"/><text x="754" y="1189" font-size="15">安全底色</text>
+</svg>

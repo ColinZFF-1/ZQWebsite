@@ -1,0 +1,13 @@
+Use case: logo-brand / precise-object-edit.
+Input 1 is the logo SYMBOL to refine; input 2 is the user's original construction sketch as structural support.
+Create ONE polished LOGO PRESENTATION sheet, not alternate concepts. Refine the SAME AI-and-orbit symbol from input 1 into completely flat, opaque, clean-edge artwork on white. The original image has excessive haze; remove all haze, blurred luminosity, neon halo, shadows and backlighting. Use input 1 only for actual core stroke geometry, discard the blurred fringes. Clear solid fills, blue/rose restricted INSIDE logo strokes, no color on surrounding white.
+
+Mandatory symbol invariants: curved foreground A with two splayed legs; upright blue I behind, visible within the A; single continuous orbital sweep curling at lower-left and ascending across the letter toward upper-right; ONE small rose four-point geometric star at the upper-right trajectory endpoint. Preserve the counter and blue I. Reduce star by around 25 percent for balance. Make clean gaps at I/trajectory crossing so I reads as behind. Nothing astronomical or solar. Keep elegant optically balanced silhouette with crisp visible curves.
+
+Palette within colored symbol only: medium muted blue #6884B4 on I and sweep start; medium dusty rose #CE839D on A and sweep end; subtle flat blue-to-rose interpolation allowed only clipped INSIDE shapes. No glow of any kind. White backdrop pure flat.
+
+Presentation: landscape about 3:2. A large primary stacked lockup occupies left two thirds: icon centered over exact dark graphite wordmark “昭桥智能” in contemporary rounded medium-weight Chinese sans, exact spaced uppercase “ZHAOQIAO” underneath, and small optional exact slogan “让 AI 走进现实” below. Strong readable Chinese, not extremely thin.
+Right third: modest thin gray vertical separator. Upper area shows the SAME symbol in completely solid black on white, lower area shows the SAME symbol in completely solid white within a graphite square with subtly rounded corners. At bottom of right third a small horizontal lockup with SAME colored icon beside exact “昭桥智能”, exact “ZHAOQIAO” below. Match actual silhouettes across all uses. Labels small and exact “黑白版” and “反白版”; no explanations.
+One single main design repeated, NOT 3 alternate logos. Generous balanced space but large useful primary mark, all edges crisp, no paper texture. Professional logo design presentation ready for user evaluation.
+
+User exclusions: sun, solar disk, sunrise or light rays; Japanese/zen motifs; direct architectural bridges. Do not substitute a sun for the star. Do not add watermarks or invent text.

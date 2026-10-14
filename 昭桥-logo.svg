@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 460" role="img" aria-labelledby="title desc">
+  <title id="title">昭桥 ZHAOQIAO AI logo</title>
+  <desc id="desc">Two upright forms connected by a bridge path, symbolizing clarity and connecting AI to real work.</desc>
+  <rect width="1280" height="460" rx="32" fill="#10233F"/>
+  <g transform="translate(74 94)">
+    <path d="M18 20 Q18 0 38 0 L88 20 Q104 28 104 45 L104 190 Q104 210 84 210 L38 190 Q18 182 18 164 Z" fill="#F7F4EC"/>
+    <path d="M184 20 Q184 0 204 0 L254 20 Q270 28 270 45 L270 190 Q270 210 250 210 L204 190 Q184 182 184 164 Z" fill="#2C6BED"/>
+    <path d="M0 126 C70 68 172 68 288 128" fill="none" stroke="#F2B24A" stroke-width="30" stroke-linecap="round"/>
+    <path d="M0 158 C70 100 172 100 288 160" fill="none" stroke="#82D8C0" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+  </g>
+  <text x="418" y="206" fill="#F7F4EC" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="94" font-weight="700" letter-spacing="5">昭桥</text>
+  <text x="424" y="278" fill="#D7E1F0" font-family="Arial, sans-serif" font-size="27" letter-spacing="9">ZHAOQIAO AI</text>
+  <text x="424" y="342" fill="#F7F4EC" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="25" letter-spacing="3">连接 AI 与真实业务</text>
+  <rect x="424" y="385" width="108" height="7" rx="3.5" fill="#2C6BED"/>
+  <rect x="544" y="385" width="54" height="7" rx="3.5" fill="#F2B24A"/>
+  <rect x="610" y="385" width="36" height="7" rx="3.5" fill="#82D8C0"/>
+</svg>

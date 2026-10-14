@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZHAOQIAO AI | Bring AI into real work</title>
+<meta name="description" content="ZHAOQIAO builds AI agents, tools, writing and marketing systems that work inside real business workflows.">
+<style>
+:root{
+  --mist:#E2DBED;
+  --blue:#79A7D9;
+  --plum:#9A8EC3;
+  --apricot:#F4C3A5;
+  --ink:#27233A;
+  --bg:#F7F5FB;
+  --muted:#6E6484;
+  --line:rgba(154,142,195,.24);
+  --shadow:0 30px 70px rgba(121,95,165,.16);
+  --radius:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);overflow-x:clip;font-family:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img,video{display:block}
+.shell{width:min(1240px,calc(100% - 96px));margin:0 auto}
+@media(max-width:760px){.shell{width:calc(100% - 40px)}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s ease,box-shadow .35s ease}
+.nav.scrolled{background:rgba(247,245,251,.82);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line)}
+.nav .shell{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand svg{width:34px;height:29px;flex:none}
+.brand-cn{font-size:16px;font-weight:800;letter-spacing:.01em;line-height:1.15}
+.brand-en{font-size:9px;letter-spacing:.3em;color:var(--muted);margin-top:2px}
+.nav.on-dark .brand-cn,.nav.on-dark .nav-links a{color:#F2EEFA}
+.nav.on-dark .brand-en{color:rgba(242,238,250,.6)}
+.nav-links{display:flex;gap:38px;font-size:13px;font-weight:600}
+.nav-links a{opacity:.78;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{border-radius:999px;padding:10px 20px;font-size:12px;font-weight:750;border:1px solid currentColor;opacity:.92;transition:.25s}
+.nav.on-dark .nav-cta{color:#F2EEFA;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.35)}
+.nav-cta:hover{background:var(--apricot);border-color:var(--apricot);color:var(--ink);opacity:1}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#211c36}
+.hero-media{position:absolute;inset:0}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media video{opacity:0;transition:opacity 1s ease}
+.hero-media.playing video{opacity:1}
+.hero-media.failed video{display:none}
+.hero-veil{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(33,28,54,.52) 0%,rgba(33,28,54,.18) 42%,rgba(33,28,54,.62) 100%)}
+.hero-copy{position:relative;z-index:2;text-align:center;color:#F5F1FB;padding:120px 24px 90px;max-width:900px}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11px;font-weight:750;letter-spacing:.34em;opacity:.85}
+.eyebrow::before,.eyebrow::after{content:"";width:44px;height:1px;background:currentColor;opacity:.5}
+.hero h1{margin:26px 0 0;font-size:clamp(46px,7.2vw,104px);line-height:1.02;letter-spacing:-.05em;font-weight:840}
+.hero h1 em{font-style:normal;background:linear-gradient(92deg,var(--apricot) 10%,var(--blue) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{margin:22px auto 0;max-width:560px;font-size:clamp(15px,1.6vw,19px);color:rgba(245,241,251,.82)}
+.hero-cta{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:15px 28px;font-size:13px;font-weight:760;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn.primary{background:var(--apricot);color:var(--ink);box-shadow:0 14px 34px rgba(244,195,165,.35)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(244,195,165,.45)}
+.btn.ghost{border:1px solid rgba(245,241,251,.45);color:#F5F1FB;background:rgba(255,255,255,.08)}
+.btn.ghost:hover{background:rgba(255,255,255,.18)}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(245,241,251,.75);font-size:10px;letter-spacing:.3em}
+.scroll-cue::after{content:"";width:1px;height:46px;background:linear-gradient(180deg,rgba(245,241,251,.85),transparent)}
+
+/* ---------- sections ---------- */
+.section{position:relative;padding:120px 0}
+.section-head{max-width:640px;margin-bottom:64px}
+.section-head .eyebrow{color:var(--plum)}
+.section-head h2{margin:18px 0 0;font-size:clamp(34px,4.4vw,56px);letter-spacing:-.045em;line-height:1.06;font-weight:820}
+.section-head p{margin:16px 0 0;color:var(--muted);font-size:16px}
+
+/* capability chapters */
+.cap{position:relative;min-height:92vh;min-height:92svh;display:grid;align-items:center;padding:90px 0}
+.cap-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center}
+.cap.flip .cap-grid .cap-copy{order:-1}
+.cap-media{position:relative}
+.cap-media .frame{position:relative;border-radius:var(--radius);padding:12px;background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(255,255,255,.62));border:1px solid var(--line);box-shadow:var(--shadow)}
+.cap-media img,.cap-media video{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:calc(var(--radius) - 10px)}
+.cap-media video{position:absolute;inset:12px;width:calc(100% - 24px);height:calc(100% - 24px);aspect-ratio:auto;opacity:0;transition:opacity .9s ease}
+.cap-media.playing video{opacity:1}
+.cap-media.failed video{display:none}
+.cap-media .frame::after{content:"";position:absolute;inset:12px;border-radius:calc(var(--radius) - 10px);border:1px solid rgba(255,255,255,.55);pointer-events:none;mix-blend-mode:screen}
+.cap-num{position:absolute;top:-44px;left:-14px;font-size:110px;font-weight:850;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(154,142,195,.35);line-height:1;user-select:none}
+.cap.flip .cap-num{left:auto;right:-14px}
+.cap-copy .tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:780;letter-spacing:.28em;color:var(--plum)}
+.cap-copy .tag::before{content:"";width:26px;height:1px;background:var(--plum)}
+.cap-copy h3{margin:16px 0 0;font-size:clamp(32px,3.8vw,50px);letter-spacing:-.045em;line-height:1.05;font-weight:820}
+.cap-copy .value{margin:18px 0 0;font-size:clamp(16px,1.5vw,19px);font-weight:640;color:var(--ink)}
+.cap-copy .line{margin:12px 0 0;font-size:14.5px;color:var(--muted);max-width:44ch}
+.cap-copy .cta{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:13px;font-weight:760;color:var(--plum);border-bottom:1px solid var(--line);padding-bottom:6px;transition:.25s}
+.cap-copy .cta:hover{color:var(--ink);border-color:var(--plum)}
+.cap-copy .cta::after{content:"→";transition:transform .25s}
+.cap-copy .cta:hover::after{transform:translateX(5px)}
+.cap::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(640px 420px at var(--glow-x,88%) 18%,rgba(154,142,195,.13),transparent 70%)}
+.cap.flip::before{--glow-x:12%}
+@media(max-width:960px){
+  .cap{min-height:0;padding:64px 0}
+  .cap-grid{grid-template-columns:1fr;gap:36px}
+  .cap.flip .cap-grid .cap-copy{order:0}
+  .cap-num{font-size:72px;top:-30px}
+}
+
+/* cases */
+.cases{background:linear-gradient(180deg,transparent,rgba(226,219,237,.34) 18%,rgba(226,219,237,.34) 82%,transparent);padding:130px 0}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.case-card{border-radius:var(--radius);overflow:hidden;background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 18px 48px rgba(121,95,165,.12);display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease}
+.case-card:hover{transform:translateY(-6px);box-shadow:0 28px 64px rgba(121,95,165,.2)}
+.case-media{position:relative;aspect-ratio:16/9;overflow:hidden}
+.case-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.case-card:hover .case-media img{transform:scale(1.035)}
+.case-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
+.case-media.playing video{opacity:1}
+.case-media.failed video{display:none}
+.case-chips{position:absolute;top:14px;left:14px;display:flex;gap:8px;z-index:2}
+.chip{border-radius:999px;padding:6px 13px;font-size:10.5px;font-weight:750;letter-spacing:.08em;background:rgba(39,35,58,.55);color:#F5F1FB;backdrop-filter:blur(8px)}
+.chip.sample{background:rgba(244,195,165,.92);color:var(--ink)}
+.case-body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.case-body h3{margin:0;font-size:21px;letter-spacing:-.03em;font-weight:790}
+.case-body .problem{margin:0;font-size:13.5px;color:var(--muted)}
+.case-body .solution{margin:0;font-size:14px;color:var(--ink)}
+.case-body .solution b{font-weight:780;color:var(--plum)}
+.case-stats{display:flex;gap:0;margin-top:auto;padding-top:18px;border-top:1px dashed var(--line)}
+.case-stats div{flex:1}
+.case-stats b{display:block;font-size:20px;letter-spacing:-.03em;color:var(--ink)}
+.case-stats span{font-size:11px;color:var(--muted);letter-spacing:.02em}
+.case-link{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:750;color:var(--plum);margin-top:4px}
+.case-link::after{content:"→";transition:transform .25s}
+.case-card:hover .case-link::after{transform:translateX(5px)}
+.case-note{margin-top:34px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.case-note::before{content:"";width:34px;height:1px;background:var(--plum)}
+@media(max-width:960px){.case-grid{grid-template-columns:1fr}}
+
+/* contact */
+.contact{padding:150px 0 130px;text-align:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:70%;background:radial-gradient(50% 60% at 50% 100%,rgba(154,142,195,.2),transparent 70%);pointer-events:none}
+.contact .eyebrow{color:var(--plum)}
+.contact h2{margin:20px 0 0;font-size:clamp(40px,5.6vw,72px);letter-spacing:-.05em;font-weight:840}
+.contact p{margin:20px auto 0;max-width:460px;color:var(--muted);font-size:16px}
+.contact .btn{margin-top:36px}
+.contact-meta{margin-top:22px;font-size:13px;color:var(--muted);letter-spacing:.04em}
+.contact-meta b{font-weight:760;color:var(--ink)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:26px 0;font-size:12px;color:var(--muted)}
+footer .shell{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .btn,.case-card,.case-media img{transition:none}
+}
+:focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<header class="nav on-dark" id="nav">
+  <div class="shell">
+    <a class="brand" href="#top" aria-label="ZHAOQIAO home">
+      <svg viewBox="0 0 52 44" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="zq-lg" x1="4" y1="40" x2="48" y2="6" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#F4C3A5"/><stop offset=".52" stop-color="#9A8EC3"/><stop offset="1" stop-color="#79A7D9"/>
+          </linearGradient>
+        </defs>
+        <path d="M14 37 C14 21 21 13 26 13 C31 13 38 21 38 37" stroke="url(#zq-lg)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M2 41 C20 39 37 25 50 4" stroke="url(#zq-lg)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="26.5" cy="30.5" r="3" fill="url(#zq-lg)"/>
+      </svg>
+      <span><span class="brand-cn">昭桥智能</span><br><span class="brand-en">ZHAOQIAO AI</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#cases">Cases</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 01 HERO : full-screen video stage -->
+  <section class="hero" id="hero">
+    <div class="hero-media" id="hero-media">
+      <img id="hero-poster" alt="" aria-hidden="true">
+      <video id="hero-video" muted loop playsinline autoplay preload="metadata"></video>
+    </div>
+    <div class="hero-veil"></div>
+    <div class="hero-copy">
+      <span class="eyebrow">ZHAOQIAO AI</span>
+      <h1>Bring AI into<br><em>real work</em></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact">Start a project</a>
+        <a class="btn ghost" href="#capabilities">Explore capabilities ↓</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+  </section>
+
+  <!-- 02 four capability chapters, rendered from data -->
+  <div id="capabilities"></div>
+
+  <!-- 03 case framework, rendered from data -->
+  <section class="section cases" id="cases">
+    <div class="shell">
+      <div class="section-head reveal">
+        <span class="eyebrow">SELECTED WORK</span>
+        <h2>Built for teams like yours</h2>
+        <p>Every case starts with one real workflow. This framework grows as new cases ship.</p>
+      </div>
+      <div class="case-grid" id="case-grid"></div>
+      <p class="case-note reveal">Cases below are layout samples — real client cases are being prepared.</p>
+    </div>
+  </section>
+
+  <!-- 04 contact -->
+  <section class="contact" id="contact">
+    <div class="shell">
+      <span class="eyebrow reveal">START WITH A REAL TASK</span>
+      <h2 class="reveal d1">Give AI a real task</h2>
+      <p class="reveal d1">One concrete problem is enough. We will show you what AI can do with it.</p>
+      <a class="btn primary reveal d2" href="tel:18046508566">Talk to ZHAOQIAO →</a>
+      <p class="contact-meta reveal d2">Phone &amp; WeChat · <b>180 4650 8566</b></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <span>西安昭桥智能科技有限公司 · Xi'an ZHAOQIAO Intelligent Technology Co., Ltd.</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SITE DATA — edit here to add capabilities, cases and videos.
+   video: null  -> poster-only placeholder (video container kept)
+   video: "assets/x.mp4" -> real video, autoplays in viewport
+   ============================================================ */
+const SITE = {
+  hero: {
+    poster: "assets/hero-zhaoqiao-workflow-poster.png",
+    video:  "assets/hero-zhaoqiao-workflow.mp4",   // temporary video — replace with final 12–15s loop
+    sub: "We build AI agents, tools, writing and marketing systems that work inside your business."
+  },
+  capabilities: [
+    {
+      id: "agents", num: "01", tag: "AGENT SYSTEMS", name: "Your own AI agent, on the job",
+      value: "We turn your knowledge, rules and workflows into a dedicated agent.",
+      line: "It retrieves the right material, follows your process and hands results to the right person.",
+      cta: { label: "See how it works", href: "#contact" },
+      poster: "assets/scene-agent.png", video: null,
+      alt: "Glass miniature office where an AI agent connects knowledge and team roles"
+    },
+    {
+      id: "tools", num: "02", tag: "AI TOOLS", name: "From one request to a working tool",
+      value: "Needs become modules. Modules become a tool your team actually uses.",
+      line: "Data sources, forms, approvals and automations connected into one usable interface.",
+      cta: { label: "See how it works", href: "#contact" },
+      poster: "assets/scene-tools.png", video: null,
+      alt: "Glass workshop where modules are assembled into a working enterprise tool"
+    },
+    {
+      id: "writing", num: "03", tag: "AI WRITING", name: "Documents that write themselves",
+      value: "Raw material in — reports, proposals and minutes out.",
+      line: "AI organizes, distills and rewrites, so your team edits instead of starting from zero.",
+      cta: { label: "See how it works", href: "#contact" },
+      poster: "assets/scene-writing.png", video: null,
+      alt: "Glass desk where files are distilled into a structured document"
+    },
+    {
+      id: "marketing", num: "04", tag: "AI MARKETING", name: "One story, every channel",
+      value: "AI turns your assets into channel-ready content — and learns from the numbers.",
+      line: "Audience, content versions and channel data connected, with next-step suggestions included.",
+      cta: { label: "See how it works", href: "#contact" },
+      poster: "assets/scene-marketing.png", video: null,
+      alt: "Glass platform distributing content across marketing channels"
+    }
+  ],
+  cases: [
+    {
+      id: "case-training", industry: "Manufacturing", sample: true,
+      title: "Onboarding that answers itself",
+      problem: "New-hire training depends on a few senior engineers.",
+      solution: "A custom agent grounded in the company knowledge base, available 24/7.",
+      results: [["-60%","onboarding time"],["24/7","instant answers"],["3 wks","to launch"]],
+      poster: "assets/scene-agent.png", video: null, href: "#contact",
+      alt: "AI agent for manufacturing onboarding — sample case"
+    },
+    {
+      id: "case-writing", industry: "Professional services", sample: true,
+      title: "Proposals without the late nights",
+      problem: "Proposals and reports eat entire consultant evenings.",
+      solution: "An AI writing pipeline that turns raw material into structured drafts.",
+      results: [["5×","faster drafts"],["1 day","proposal cycle"],["100%","on-brand format"]],
+      poster: "assets/scene-writing.png", video: null, href: "#contact",
+      alt: "AI writing pipeline for consulting proposals — sample case"
+    },
+    {
+      id: "case-marketing", industry: "Consumer brand", sample: true,
+      title: "Six channels, one small team",
+      problem: "Content for six channels, produced by three people.",
+      solution: "An AI marketing engine that plans, adapts and schedules per channel.",
+      results: [["6","channels covered"],["3×","content output"],["+38%","engagement"]],
+      poster: "assets/scene-marketing.png", video: null, href: "#contact",
+      alt: "AI marketing engine across channels — sample case"
+    }
+  ]
+};
+
+/* ---------- render capabilities ---------- */
+const capWrap = document.getElementById("capabilities");
+capWrap.innerHTML = SITE.capabilities.map((c, i) => `
+  <section class="cap ${i % 2 ? "flip" : ""}" id="cap-${c.id}" aria-labelledby="cap-${c.id}-title">
+    <div class="shell cap-grid">
+      <div class="cap-media reveal" data-fallback="poster">
+        <span class="cap-num" aria-hidden="true">${c.num}</span>
+        <div class="frame">
+          <img src="${c.poster}" alt="${c.alt}" loading="lazy">
+          <video muted loop playsinline preload="none" data-src="${c.video || ""}" aria-hidden="true" tabindex="-1"></video>
+        </div>
+      </div>
+      <div class="cap-copy">
+        <span class="tag reveal">${c.tag}</span>
+        <h3 id="cap-${c.id}-title" class="reveal d1">${c.name}</h3>
+        <p class="value reveal d1">${c.value}</p>
+        <p class="line reveal d2">${c.line}</p>
+        <a class="cta reveal d2" href="${c.cta.href}">${c.cta.label}</a>
+      </div>
+    </div>
+  </section>`).join("");
+
+/* ---------- render cases ---------- */
+document.getElementById("case-grid").innerHTML = SITE.cases.map(k => `
+  <article class="case-card reveal">
+    <div class="case-media" data-fallback="poster">
+      <div class="case-chips">
+        <span class="chip">${k.industry}</span>
+        ${k.sample ? `<span class="chip sample">Sample</span>` : ""}
+      </div>
+      <img src="${k.poster}" alt="${k.alt}" loading="lazy">
+      <video muted loop playsinline preload="none" data-src="${k.video || ""}" aria-hidden="true" tabindex="-1"></video>
+    </div>
+    <div class="case-body">
+      <h3>${k.title}</h3>
+      <p class="problem">${k.problem}</p>
+      <p class="solution"><b>ZHAOQIAO&nbsp;·&nbsp;</b>${k.solution}</p>
+      <div class="case-stats">
+        ${k.results.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("")}
+      </div>
+      <a class="case-link" href="${k.href}">Ask about this case</a>
+    </div>
+  </article>`).join("");
+
+/* ---------- video controller: play in viewport, pause out, poster fallback ---------- */
+function bindVideo(media, video) {
+  if (!video) return;
+  const src = video.dataset.src;
+  // no source configured yet -> keep the poster as placeholder
+  if (!src) { video.style.display = "none"; return; }
+
+  const load = () => { if (!video.src) { video.src = src; video.load(); } };
+
+  new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (e.isIntersecting) { load(); video.play().catch(() => {}); }
+      else video.pause();
+    }
+  }, { threshold: 0.25 }).observe(video);
+
+  video.addEventListener("playing", () => media.classList.add("playing"));
+  video.addEventListener("error", () => media.classList.add("failed")); // graceful poster fallback
+}
+
+document.querySelectorAll("[data-fallback]").forEach(media => {
+  bindVideo(media, media.querySelector("video"));
+});
+
+/* hero video (always at top, loads immediately) */
+(() => {
+  const media = document.getElementById("hero-media");
+  const poster = document.getElementById("hero-poster");
+  const video = document.getElementById("hero-video");
+  document.getElementById("hero-sub").textContent = SITE.hero.sub;
+  poster.src = SITE.hero.poster;
+  if (SITE.hero.video) {
+    video.src = SITE.hero.video;
+    video.addEventListener("playing", () => media.classList.add("playing"));
+    video.addEventListener("error", () => media.classList.add("failed"));
+  } else {
+    video.style.display = "none";
+  }
+})();
+
+/* ---------- scroll reveal ---------- */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reduce) {
+  const rio = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); }
+  }), { threshold: 0.16 });
+  document.querySelectorAll(".reveal").forEach(el => rio.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+
+/* ---------- nav state ---------- */
+const nav = document.getElementById("nav");
+const hero = document.getElementById("hero");
+const onScroll = () => {
+  nav.classList.toggle("scrolled", scrollY > 40);
+  nav.classList.toggle("on-dark", scrollY < hero.offsetHeight - 90);
+};
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+</script>
+</body>
+</html>

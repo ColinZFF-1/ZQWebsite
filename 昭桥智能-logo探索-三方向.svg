@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">昭桥智能 logo exploration</title>
+  <desc id="desc">Three logo directions for 昭桥智能: dual modules, typographic symbol, and twin brackets.</desc>
+  <rect width="1600" height="1120" fill="#FAF9F5"/>
+  <style>
+    .cn{font-family:Arial,'Microsoft YaHei',sans-serif;font-weight:800;fill:#161616}
+    .en{font-family:Arial,sans-serif;letter-spacing:7px;fill:#8C5A3C}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#5b5b5b}
+  </style>
+  <text x="70" y="80" class="cn" font-size="38">昭桥智能 Logo 方向探索</text>
+  <text x="70" y="124" class="small" font-size="22">品牌主口号：让 AI 走进现实　｜　品牌介绍句：昭桥智能，连接现实与 AI。</text>
+  <line x1="70" y1="155" x2="1530" y2="155" stroke="#D6D0C8" stroke-width="2"/>
+
+  <!-- Direction A -->
+  <rect x="70" y="205" width="1460" height="250" rx="20" fill="#FFFFFF" stroke="#E5DED5" stroke-width="2"/>
+  <text x="110" y="260" class="cn" font-size="26">A｜双模块连接</text>
+  <text x="110" y="300" class="small" font-size="20">两个现实模块，中间通过结构化路径连接；科技感与连接感最强。</text>
+  <g transform="translate(110 325)">
+    <rect x="0" y="0" width="96" height="96" rx="22" fill="#E4372E"/>
+    <rect x="160" y="0" width="96" height="96" rx="22" fill="#8C5A3C"/>
+    <path d="M80 30 C120 30 120 66 160 66" fill="none" stroke="#161616" stroke-width="14" stroke-linecap="round"/>
+    <path d="M80 66 C120 66 120 30 160 30" fill="none" stroke="#FAF9F5" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="430" y="375" class="cn" font-size="70">昭桥智能</text>
+  <text x="438" y="420" class="en" font-size="20">ZHAOQIAO</text>
+  <text x="820" y="420" class="small" font-size="22">让 AI 走进现实</text>
+
+  <!-- Direction B -->
+  <rect x="70" y="490" width="1460" height="250" rx="20" fill="#FFFFFF" stroke="#E5DED5" stroke-width="2"/>
+  <text x="110" y="545" class="cn" font-size="26">B｜昭桥文字图形化</text>
+  <text x="110" y="585" class="small" font-size="20">让“昭桥”两个字本身成为标志；日与桥被藏进字形结构。</text>
+  <g transform="translate(110 620)">
+    <rect x="0" y="0" width="76" height="76" rx="14" fill="#E4372E"/>
+    <rect x="22" y="22" width="32" height="32" rx="4" fill="#FAF9F5"/>
+    <path d="M98 62 Q150 -4 202 62" fill="none" stroke="#8C5A3C" stroke-width="18" stroke-linecap="round"/>
+    <path d="M118 64 V88 M182 64 V88" stroke="#8C5A3C" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <text x="430" y="670" class="cn" font-size="70">昭桥智能</text>
+  <text x="438" y="715" class="en" font-size="20">ZHAOQIAO</text>
+  <text x="820" y="715" class="small" font-size="22">让 AI 走进现实</text>
+
+  <!-- Direction C -->
+  <rect x="70" y="775" width="1460" height="250" rx="20" fill="#FFFFFF" stroke="#E5DED5" stroke-width="2"/>
+  <text x="110" y="830" class="cn" font-size="26">C｜双括号连接</text>
+  <text x="110" y="870" class="small" font-size="20">两个柔和结构彼此靠近，中间形成接口；更年轻、更亲近、更适合小尺寸。</text>
+  <g transform="translate(110 900)">
+    <path d="M80 0 C30 0 0 30 0 78 C0 126 30 156 80 156" fill="none" stroke="#E4372E" stroke-width="32" stroke-linecap="round"/>
+    <path d="M180 0 C230 0 260 30 260 78 C260 126 230 156 180 156" fill="none" stroke="#8C5A3C" stroke-width="32" stroke-linecap="round"/>
+    <path d="M86 78 H174" stroke="#161616" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <text x="430" y="960" class="cn" font-size="70">昭桥智能</text>
+  <text x="438" y="1005" class="en" font-size="20">ZHAOQIAO</text>
+  <text x="820" y="1005" class="small" font-size="22">让 AI 走进现实</text>
+</svg>

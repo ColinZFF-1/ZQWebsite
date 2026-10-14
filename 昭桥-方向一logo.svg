@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 500" role="img" aria-labelledby="title desc">
+  <title id="title">昭桥 ZHAOQIAO logo - sun and bridge</title>
+  <desc id="desc">A vermilion sun above a wood-colored arch bridge, with the 昭桥 wordmark.</desc>
+  <rect width="1320" height="500" rx="26" fill="#FAF9F5"/>
+  <g transform="translate(90 78)">
+    <circle cx="145" cy="76" r="64" fill="#E4372E"/>
+    <path d="M10 210 Q145 52 280 210" fill="none" stroke="#8C5A3C" stroke-width="34" stroke-linecap="round"/>
+    <path d="M10 210 H280" stroke="#161616" stroke-width="12" stroke-linecap="round"/>
+    <path d="M48 208 V240 M242 208 V240" stroke="#8C5A3C" stroke-width="22" stroke-linecap="round"/>
+    <path d="M72 174 Q145 98 218 174" fill="none" stroke="#FAF9F5" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="430" y="220" fill="#161616" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="96" font-weight="800" letter-spacing="8">昭桥</text>
+  <text x="438" y="292" fill="#8C5A3C" font-family="Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="10">ZHAOQIAO</text>
+  <text x="438" y="356" fill="#161616" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="28" letter-spacing="4">把 AI 落到现场</text>
+  <rect x="438" y="398" width="100" height="7" rx="3.5" fill="#E4372E"/>
+  <text x="438" y="450" fill="#5E5E5E" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="20" letter-spacing="2">西安昭桥智能科技有限公司</text>
+</svg>

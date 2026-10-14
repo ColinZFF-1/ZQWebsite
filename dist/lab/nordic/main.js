@@ -1,0 +1,5 @@
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.2});
+$$('.cap,.cs,.bb,.c-box,section>h2').forEach((el,i)=>{el.classList.add('up');el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});$$('.tl li').forEach(l=>io.observe(l));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800)};
+$$('.copy').forEach(b=>b.addEventListener('click',()=>{const s=b.dataset.copy;(navigator.clipboard&&isSecureContext?navigator.clipboard.writeText(s):Promise.reject()).catch(()=>{const t=document.createElement('textarea');t.value=s;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove()}).finally(()=>toast('微信号已复制'))}));})();

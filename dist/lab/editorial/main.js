@@ -1,0 +1,5 @@
+(()=>{const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.18});
+document.querySelectorAll('.essay-h,.essay-body,.margin,.case,.steps li,.pull,.colophon h2,.standfirst,.toc li').forEach(el=>{el.classList.add('rv');io.observe(el)});
+document.querySelectorAll('.crop').forEach(el=>{const p=el.parentElement;const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){el.classList.add('in');o.disconnect()}},{threshold:0,rootMargin:'0px 0px -10% 0px'});o.observe(p)});
+// slow crop: image drifts 3% with scroll (B1)
+const imgs=[...document.querySelectorAll('.plate img,.cover-plate img')];if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let t=0;addEventListener('scroll',()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;imgs.forEach(im=>{const r=im.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const p=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.objectPosition=`50% ${50+p*6}%`;});});},{passive:true});}})();

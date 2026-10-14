@@ -1,0 +1,5 @@
+(()=>{requestAnimationFrame(()=>document.documentElement.classList.add('loaded'));
+document.querySelectorAll('.row-h').forEach(b=>b.addEventListener('click',()=>{const r=b.parentElement,o=!r.classList.contains('open');document.querySelectorAll('.row').forEach(x=>{x.classList.remove('open');x.querySelector('.row-h').setAttribute('aria-expanded','false')});if(o){r.classList.add('open');b.setAttribute('aria-expanded','true')}}));
+document.querySelectorAll('.steps li').forEach((l,i)=>l.style.setProperty('--i',i));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){(x.target._t||[x.target]).forEach(t=>t.classList.add('in'));io.unobserve(x.target)}}),{threshold:0,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.b-t,.c-h,.c-tel,.h-sub').forEach(el=>{el.classList.add('tr');const p=el.parentElement;(p._t=p._t||[]).push(el);io.observe(p)});io.observe(document.querySelector('.steps'));})();

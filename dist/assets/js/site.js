@@ -29,7 +29,7 @@
 
   /* ---------- case media (CASE_MEDIA) ---------- */
   // 交付案例媒体配置：键为案例编号(1-4)，填 image 或 video（相对 dist/ 的路径），留空显示占位。
-  const CASE_MEDIA={1:{image:'',video:''},2:{image:'',video:''},3:{image:'',video:''},4:{image:'',video:''}};
+  const CASE_MEDIA={1:{image:'assets/cases/case-01.webp',video:''},2:{image:'assets/cases/case-02.webp',video:''},3:{image:'assets/cases/case-03.webp',video:''},4:{image:'assets/cases/case-04.webp',video:''}};
   $$('.case-card').forEach(card=>{const m=$('.case-media',card),c=CASE_MEDIA[card.dataset.case]||{};const img=m.dataset.image||c.image,vid=m.dataset.video||c.video;
     if(vid){const v=document.createElement('video');Object.assign(v,{muted:true,loop:true,playsInline:true,autoplay:true,preload:'metadata'});v.src=vid;if(img)v.poster=img;m.appendChild(v);m.classList.add('filled');}
     else if(img){const im=document.createElement('img');im.src=img;im.loading='lazy';im.alt=$('h3',card).textContent;m.appendChild(im);m.classList.add('filled');}});
@@ -63,12 +63,11 @@
   function layoutLine(){
     const page=$('.page'),H=page.scrollHeight,W=innerWidth;svg.setAttribute('height',H);svg.setAttribute('viewBox','0 0 '+W+' '+H);
     $('#zqGrad').setAttribute('y2',H);
-    const win=docPos($('#hero-window')),wr=$('#hero-window').getBoundingClientRect();
     const gx=Math.max(8,$('.cases .wrap').getBoundingClientRect().left/2);
     nodes=$$('[data-node]').map(n=>({el:n,...docPos(n)}));
     const btn=docPos($('#contact-btn'));
-    const sx=wr.left+scrollX, sy=win.bottom-40;
-    let d='M'+sx+' '+sy+' C'+(sx-30)+' '+(sy+20)+' '+gx+' '+(sy-10)+' '+gx+' '+(win.bottom+60);
+    const cta=docPos($('.hero-ctas .btn-primary')),hb=docPos($('.hero'));const sx=cta.x,sy=cta.bottom+10;
+    let d='M'+sx+' '+sy+' C'+sx+' '+(hb.bottom-40)+' '+gx+' '+(sy+40)+' '+gx+' '+(hb.bottom+40);
     nodes.forEach(n=>{d+=' L'+gx+' '+n.y;});
     const bl=$('#contact-btn').getBoundingClientRect().left+scrollX-8;d+=' L'+gx+' '+(btn.y-70)+' C'+gx+' '+btn.y+' '+(gx+40)+' '+btn.y+' '+(gx+90)+' '+btn.y+' L'+bl+' '+btn.y;
     base.setAttribute('d',d);draw.setAttribute('d',d);halo.setAttribute('d',d);
@@ -86,16 +85,6 @@
     $('#contact-btn').classList.toggle('lit',len>=total-4);
   }
 
-  /* ---------- hero connector lines ---------- */
-  function heroLinks(){const s=$('#hero-links'),st=$('.hero-stage').getBoundingClientRect(),w=$('#hero-window').getBoundingClientRect();
-    const W=st.width,H=st.height,l=w.left-st.left,r=w.right-st.left;s.setAttribute('viewBox','0 0 '+W+' '+H);
-    const en=root.lang==='en',lab=en?[['TRAINING',.28],['CO-CREATION',.72],['DELIVERY',.28],['REAL BUSINESS',.72]]:[['赋能培训',.28],['场景共创',.72],['系统落地',.28],['真实业务',.72]];
-    const out=-Math.min(80,st.left+4);let g='';
-    lab.forEach(([t,f],i)=>{const left=i<2,y=H*f,x0=left?l:r,x1=left?Math.max(out,l-150):Math.min(W-out,r+150),mx=(x0+x1)/2;
-      if(Math.abs(x0-x1)<30)return;
-      g+='<path class="hl" d="M'+x0+' '+y+' C'+mx+' '+y+' '+mx+' '+(y+(left?-24:24))+' '+x1+' '+(y+(left?-24:24))+'"/><circle r="3" cx="'+x1+'" cy="'+(y+(left?-24:24))+'"/><text x="'+(left?x1+8:x1-8)+'" y="'+(y+(left?-32:16))+'" text-anchor="'+(left?'start':'end')+'">'+t+'</text>';});
-    s.innerHTML=g;return $$('path',s);}
-
   /* ---------- magnetic buttons ---------- */
   if(!reduce&&matchMedia('(pointer:fine)').matches)$$('.magnetic').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.38;b.style.transform='translate('+x+'px,'+y+'px)';});b.addEventListener('mouseleave',()=>{b.style.transition='transform .5s cubic-bezier(.2,.8,.2,1)';b.style.transform='';setTimeout(()=>b.style.transition='',500);});});
 
@@ -112,8 +101,8 @@
 
   if(!hasGsap||reduce){
     // static fallback: stacked layout, fully drawn line, final numbers
-    setCap(0);$$('.count').forEach(countUp);$$('.tl-step').forEach(e=>e.classList.add('lit'));heroLinks();
-    addEventListener('load',layoutLine);addEventListener('resize',()=>{heroLinks();layoutLine();});
+    setCap(0);$$('.count').forEach(countUp);$$('.tl-step').forEach(e=>e.classList.add('lit'));
+    addEventListener('load',layoutLine);addEventListener('resize',layoutLine);
     addEventListener('scroll',()=>{navState();updateLine();},{passive:true});navState();layoutLine();
     return;
   }
@@ -124,25 +113,40 @@
 
   // hero intro
   const tl=gsap.timeline({defaults:{ease:'expo.out'}});
-  tl.from('.hero-bigword',{opacity:0,scale:1.08,duration:2})
-    .from('.hero-kicker',{y:16,opacity:0,duration:.9},.15)
-    .from('#hero-title .ch',{yPercent:110,opacity:0,rotate:4,duration:1.1,stagger:.035},.25)
-    .from('.hero-sub',{y:18,opacity:0,duration:1},.7)
-    .from('#hero-window',{clipPath:'inset(18% 30% 18% 30% round 26px)',duration:1.6,ease:'expo.inOut'},.35)
-    .from('.hero-ctas .btn',{y:20,opacity:0,stagger:.08,duration:.9},1.1);
-  function animLinks(){const ps=heroLinks();ps.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;});
-    gsap.to(ps,{strokeDashoffset:0,duration:1.4,ease:'power2.out',stagger:.12,delay:.2});gsap.from('#hero-links circle,#hero-links text',{opacity:0,duration:.8,stagger:.06,delay:.9});}
-  tl.add(animLinks,1.2);
-  gsap.to('.hero-bigword',{yPercent:-30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-  gsap.to('#hero-window',{scale:.92,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  tl.from('.hero-window',{opacity:0,duration:1.6,ease:'power2.out'})
+    .from('.hero-kicker',{y:14,opacity:0,duration:.9},.2)
+    .from('#hero-title .ch',{yPercent:100,opacity:0,duration:1,stagger:.03},.3)
+    .from('.hero-rule',{scaleX:0,opacity:0,duration:1},.8)
+    .from('.hero-sub',{y:14,opacity:0,duration:1},.85)
+    .from('.hero-ctas .btn',{y:14,opacity:0,stagger:.08,duration:.9},1.05)
+    .from('.hero-scroll',{opacity:0,duration:1},1.4);
+  // hero copy fades as you leave (opacity only, video untouched)
+  gsap.to('.hero-head,.hero-ctas',{opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'60% top',end:'bottom top',scrub:.6}});
+
+  // background colour transitions between sections
+  $$('[data-bg]').forEach(sec=>ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',onToggle:st=>{if(st.isActive)gsap.to('.bgwash',{backgroundColor:sec.dataset.bg,duration:1.2,ease:'power2.out',overwrite:true});}}));
+  // kicker lines draw, section content staggers in
+  $$('.kicker').forEach(k=>gsap.from(k,{opacity:0,x:-12,duration:.9,ease:'expo.out',scrollTrigger:{trigger:k,start:'top 90%'}}));
+  // contact: mask wipe
+  gsap.fromTo('.contact',{clipPath:'inset(0% 5% 0% 5% round 48px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:'.contact',start:'top bottom',end:'top 30%',scrub:.6}});
+  // cases: clip reveal
+  $$('.case-card').forEach((c,k)=>gsap.fromTo(c,{clipPath:'inset(12% 0% 0% 0% round 24px)',opacity:0},{clipPath:'inset(0% 0% 0% 0% round 24px)',opacity:1,duration:1.2,ease:'expo.out',delay:(k%2)*.12,scrollTrigger:{trigger:c,start:'top 88%'}}));
 
   // heading reveals
   $$('.reveal').forEach(h=>gsap.from(h,{yPercent:60,opacity:0,clipPath:'inset(0 0 100% 0)',duration:1.1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}}));
-  gsap.utils.toArray('.case-card,.model,.note').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
-  gsap.from('.tl-step',{y:24,opacity:0,stagger:.08,duration:.9,ease:'expo.out',scrollTrigger:{trigger:'#timeline',start:'top 85%'}});
-  {const fill=$('#tl-fill'),stepsEl=$$('.tl-step'),vert=!desktop();fill.style.transformOrigin=vert?'top':'left';
-    gsap.fromTo(fill,vert?{scaleY:0}:{scaleX:0},{...(vert?{scaleY:1}:{scaleX:1}),ease:'none',scrollTrigger:{trigger:'.proc-panel',start:vert?'top 70%':'top 75%',end:vert?'bottom 60%':'top 25%',scrub:true,
-      onUpdate:st=>stepsEl.forEach((el,k)=>el.classList.toggle('lit',st.progress>=k/(stepsEl.length-1)-0.02))}});}
+  gsap.utils.toArray('.model,.note').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
+  {const fill=$('#tl-fill'),steps=$$('.tl-step'),vert=!desktop();fill.style.transformOrigin=vert?'top':'left';
+    gsap.set(fill,vert?{scaleY:0}:{scaleX:0});gsap.set(steps,{opacity:.25});
+    $$('.tl-ico path,.tl-ico circle,.tl-ico rect').forEach(e=>{const L=e.getTotalLength?e.getTotalLength():60;e.style.strokeDasharray=L;e.style.strokeDashoffset=L;});
+    const pt=gsap.timeline({paused:true,defaults:{ease:'power2.out'}});
+    pt.to(fill,{...(vert?{scaleY:1}:{scaleX:1}),duration:3.0,ease:'none'},0);
+    steps.forEach((st,k)=>{const t=k/(steps.length-1)*3.0;
+      pt.to(st,{opacity:1,duration:.5},t).call(()=>st.classList.add('lit'),null,t)
+        .fromTo($('.tl-num',st),{scale:.7},{scale:1,duration:.7,ease:'back.out(2.2)'},t)
+        .to($$('.tl-ico *',st),{strokeDashoffset:0,duration:.9,stagger:.08},t+.05)
+        .from($$('b,small',st),{y:10,opacity:0,duration:.6,stagger:.06},t+.1)
+        .from($('.tl-big',st),{opacity:0,duration:.8},t);});
+    ScrollTrigger.create({trigger:'.proc-panel',start:'top 72%',once:true,onEnter:()=>pt.play()});}
   $$('.cases .count').forEach(el=>ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>countUp(el)}));
 
   // capabilities storytelling
@@ -155,7 +159,6 @@
   mm.add('(max-width: 900px)',()=>{setCap(0);capPanes.forEach(p=>$$('.count',p).forEach(el=>ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>countUp(el)})));});
 
   ScrollTrigger.addEventListener('refresh',()=>{layoutLine();});
-  addEventListener('resize',()=>{heroLinks();});
   addEventListener('load',()=>ScrollTrigger.refresh());
   navState();ScrollTrigger.refresh();
 })();

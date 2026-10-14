@@ -298,6 +298,73 @@
       .ov-doc{top:auto;bottom:16px;right:16px}.ov-chat span{font-size:11.5px}.ov-flow i{font-size:10.5px;padding:4px 7px}.ov-flow b{width:10px}
       .hero h1{font-size:28px}
     }
+    /* ===== r9: calm motion, full-bleed hero, clean videos, unified rhythm ===== */
+    body{background:none!important}
+    .bgwash{position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:#1d1636;
+      background-image:radial-gradient(1200px 700px at 85% 10%,rgba(154,142,195,.20),transparent 60%),radial-gradient(900px 600px at 0% 50%,rgba(121,167,217,.12),transparent 60%),radial-gradient(1000px 700px at 90% 90%,rgba(160,110,230,.14),transparent 60%),linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:auto,auto,auto,96px 96px,96px 96px}
+    /* rhythm: one section spacing scale */
+    .caps,.cases,.info{padding:128px 0 112px}
+    .kicker{margin-bottom:16px}
+    .sec-title{font-size:clamp(30px,3vw,44px);line-height:1.2;margin:0}
+    .caps-head,.cases-head{margin-bottom:48px}
+    .info .sec-title{margin-bottom:48px}
+    /* hero: full-bleed video */
+    .hero{min-height:100svh;padding:120px 0 120px;justify-content:center}
+    .hero-stage{position:absolute;inset:0;width:100%;margin:0;z-index:-1}
+    .hero-window{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0;border-radius:0;border:0;box-shadow:none}
+    .hero-video{transform:none!important;filter:none}
+    .hero-window:after{background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(29,22,54,.55),rgba(29,22,54,.15) 70%),linear-gradient(180deg,rgba(29,22,54,.55) 0%,rgba(29,22,54,.1) 30%,rgba(29,22,54,.2) 70%,#1d1636 100%)}
+    .hero:before,.hero:after{display:none}
+    .win-tag{left:var(--gutter);top:auto;bottom:28px}
+    .hero-head{max-width:1180px}
+    .hero h1{text-shadow:0 4px 30px rgba(20,12,45,.6)}
+    .hero-sub{text-shadow:0 2px 16px rgba(20,12,45,.85)}
+    .hero-ctas{margin-top:36px}
+    .hero-scroll{bottom:30px;opacity:.7}
+    /* capability videos: clean, no skins, no transforms */
+    .cap-media{border-radius:24px;clip-path:none;background:#251c45;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(8,4,26,.45)}
+    .cap-media:after,.cap-media:before{display:none!important}
+    .cap-media video{transform:none!important;animation:none!important;filter:none!important;object-position:50% 50%;opacity:1}
+    html.pinned .cap-media{transform:none;transition:opacity .8s ease}
+    html.pinned .cap-pane{transform:none;transition:opacity .6s ease}
+    html.pinned .cap-stage{grid-template-columns:minmax(0,1.38fr) minmax(340px,1fr);row-gap:20px}
+    html.pinned .caps-inner{padding-top:88px}
+    html.pinned .caps-head{margin-bottom:28px}
+    html.pinned .cap-panes{min-height:470px}
+    html.pinned .cap-pane{padding:26px 28px}
+    .cap-pane h2{font-size:clamp(22px,1.9vw,28px);line-height:1.3;margin:0 0 14px}
+    .cap-body{font-size:14.5px;line-height:1.8;color:var(--mut);margin:0}
+    .cap-inc{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:8px}
+    .cap-inc li{position:relative;padding-left:20px;font-size:14px;line-height:1.55;color:var(--txt)}
+    .cap-inc li:before{content:"";position:absolute;left:2px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(255,210,122,.8)}
+    .cap-deliv{margin:14px 0 0;font-size:13px;line-height:1.6;color:var(--mut);display:flex;gap:10px}
+    .cap-deliv b{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);padding:2px 8px;border:1px solid rgba(255,210,122,.45);border-radius:999px;height:fit-content}
+    .copy-link{margin-top:18px}
+    .cap-list li{transition:opacity .4s,background .4s,border-color .4s}
+    /* cases */
+    .case-media img{opacity:1;filter:none}
+    .case-card{will-change:auto}
+    .case-info{padding:22px 24px 26px}
+    .case-info h3{font-size:19px;margin:8px 0 8px}
+    /* process */
+    .tl-num{width:52px;height:52px;flex-direction:column;gap:0}
+    .tl-num em{display:none}
+    .tl-ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .tl-track{top:calc(48px + 26px)}
+    .tl-step b{font-size:16px;margin-top:4px}
+    .tl-big{top:-40px}
+    /* contact */
+    .contact{margin-top:0}
+    @media (max-width:900px){
+      .caps,.cases,.info{padding:88px 0 72px}
+      .caps-head,.cases-head{margin-bottom:32px}.info .sec-title{margin-bottom:32px}
+      .hero{padding:96px 0 96px}
+      .cap-pane{padding:24px 0 56px}
+      .tl-track{left:calc(20px + 24px)}
+      .win-tag{display:none}
+    }
+    @media (prefers-reduced-motion:reduce){.contact,.case-card{clip-path:none!important}}
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -308,19 +375,18 @@
     <div class="nav-right"><button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">EN</button><a class="nav-cta magnetic" href="#contact" data-en="Book a diagnosis →">预约诊断 →</a></div>
   </header>
 
+  <div class="bgwash" aria-hidden="true"></div>
   <main id="top" class="page">
     <svg class="zq-line" id="zq-line" aria-hidden="true"><defs><linearGradient id="zqGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#79a7d9"/><stop offset=".5" stop-color="#9a8ec3"/><stop offset="1" stop-color="#79a7d9"/></linearGradient></defs><path class="base" id="zq-base"/><path class="halo" id="zq-halo"/><path class="draw" id="zq-draw"/><circle class="tip" id="zq-tip" r="3.5" cx="-20" cy="-20"/></svg>
 
-    <section class="hero" data-section="top" data-dark>
-      <div class="hero-bigword" aria-hidden="true">ZHAOQIAO</div>
-      <div class="hero-head wrap">
+    <section class="hero" data-bg="#1d1636" data-section="top" data-dark>
+            <div class="hero-head wrap">
         <div class="hero-kicker"><span class="pill">ZHAOQIAO AI</span> 西安昭桥智能科技</div>
         <h1 id="hero-title" data-en="ZHAOQIAO AI — Connecting AI to real business scenarios">昭桥｜连接 AI 与真实业务场景</h1>
         <div class="hero-rule" aria-hidden="true"><i></i><b></b><i></i></div>
         <p class="hero-sub" data-en="AI enablement training, use-case co-creation and hands-on system delivery for companies and institutions.">为企业与机构提供 AI 赋能培训、场景共创与<span style="white-space:nowrap">系统落地实践。</span></p>
       </div>
       <div class="hero-stage">
-        <svg class="hero-links" id="hero-links" aria-hidden="true"></svg>
         <div class="hero-window" id="hero-window">
           <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.webp" aria-label="A miniature glass office ecosystem connected by AI">
             <source src="assets/videos/hero-mobile.mp4" type="video/mp4" media="(max-width: 700px)">
@@ -330,9 +396,10 @@
         </div>
       </div>
       <div class="hero-ctas"><a class="btn btn-primary magnetic" href="#contact" data-en="Book an AI use-case diagnosis">预约一次 AI 场景诊断</a><a class="btn btn-ghost magnetic" href="#cases" data-en="See our work">查看交付案例</a></div>
+      <div class="hero-scroll" aria-hidden="true"><i></i>SCROLL<i></i></div>
     </section>
 
-    <section class="caps" id="capabilities" data-section="caps">
+    <section class="caps" data-bg="#1f1840" id="capabilities" data-section="caps">
       <span class="node" data-node="caps" style="top:120px"><span class="node-label">01 · CAPABILITIES</span></span>
       <div class="caps-inner wrap">
         <div class="caps-head"><div><div class="kicker">CAPABILITIES · 能力</div><h2 class="sec-title reveal" data-en="What we build">我们做什么</h2></div><div class="caps-progress" id="caps-progress">01 / 04</div></div>
@@ -343,27 +410,13 @@
             <li data-i="2"><small>03</small><b data-en="AI writing">AI智能写作</b></li>
             <li data-i="3"><small>04</small><b data-en="AI marketing solutions">AI智能营销解决方案</b></li>
           </ol>
-          <div class="cap-medias">
-            <div class="cap-media m-agent active" data-i="0"><video muted loop playsinline preload="metadata" data-src="assets/videos/capability-agent.mp4" aria-label="智能体定制 / CUSTOM AI AGENTS"></video><div class="tint"></div>
-              <div class="ov ov-chat"><span class="q" data-en="Ask: liability rules for this repair?">提问：这次维修的保修责任怎么认定？</span><span class="a" data-en="Searched knowledge base · matched similar cases">已检索知识库 · 匹配相似案例</span></div><span class="idx">01 / 04 · AGENT</span></div>
-            <div class="cap-media m-tools" data-i="1"><video muted loop playsinline preload="none" data-src="assets/videos/capability-tools.mp4" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT"></video><div class="tint"></div>
-              <div class="ov ov-flow"><i data-en="Data">数据源</i><b></b><i data-en="API">接口</i><b></b><i data-en="Form">表单</i><b></b><i data-en="Approval">审批</i></div><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="idx">02 / 04 · TOOLS</span></div>
-            <div class="cap-media m-writing" data-i="2"><video muted loop playsinline preload="none" data-src="assets/videos/capability-writing.mp4" aria-label="智能写作 / AI WRITING"></video><div class="tint"></div>
-              <div class="ov ov-doc"><b data-en="Report · Minutes · Proposal">公文 · 报告 · 会议纪要</b><span></span><span></span><span class="s"></span><em class="caret"></em></div><span class="idx">03 / 04 · WRITING</span></div>
-            <div class="cap-media m-mkt" data-i="3"><video muted loop playsinline preload="none" data-src="assets/videos/capability-marketing.mp4" aria-label="营销 / AI MARKETING"></video><div class="tint"></div>
-              <div class="ov ov-chan"><i data-en="Insight">洞察</i><i data-en="Decision">决策</i><i data-en="Content">图文 / 短视频</i><i>GEO · SEO</i></div><div class="bars"><span></span><span></span><span></span><span></span><span></span></div><span class="idx">04 / 04 · MARKETING</span></div>
-          </div>
-          <div class="cap-panes">
-            <article class="cap-pane active" id="agent" data-i="0"><div class="kicker">01 · 智能体定制 / CUSTOM AI AGENTS</div><h2 data-en="Custom agents built on your enterprise knowledge base">基于企业知识库构建<span style="white-space:nowrap">定制化智能体</span></h2><div class="cap-stat"><b class="count" data-to="500" data-suffix="+">500+</b><span data-en="repair cases loaded into one delivered agent (Case 01)">维修案例接入已交付的智能体（案例 01）</span></div><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
-            <article class="cap-pane" id="tools" data-i="1"><div class="kicker">02 · AI 工具开发 / AI TOOL DEVELOPMENT</div><h2 data-en="Efficient AI tools built on your workflows">基于工作流打造高效AI工具</h2><div class="cap-stat"><b class="count" data-to="87.5" data-dec="1" data-suffix="%">87.5%</b><span data-en="lower monthly cost on a delivered review system (Case 04)">已交付审核系统的月度成本降幅（案例 04）</span></div><p data-en="We break repetitive work into modules, connect data sources, APIs, forms and approvals, and build an internal tool your team uses every day. Development beyond training is handled by our engineering team, by project or by module. We can also add AI features to your existing systems or deliver jointly with your IT team.">我们把重复性工作拆成模块，接上数据源、接口、表单和审批，做成团队日常能用的内部工具。培训之外的开发需求由技术团队承接，可以按项目或模块做，也可以在现有系统上加 AI 功能，或和贵司 IT 联合交付。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
-            <article class="cap-pane" id="writing" data-i="2"><div class="kicker">03 · 智能写作 / AI WRITING</div><h2 data-en="AI writing">AI智能写作</h2><div class="cap-stat"><b>Prompt + Skill</b><span data-en="writing standards turned into reusable assets">写作规范沉淀为可复用资产</span></div><p data-en="For official documents, reports, meeting minutes, draft proposals and briefings. We turn each role's writing standards and source material into reusable prompts and Skills, so new hires can write first drafts that meet your standards.">适用于公文、报告、会议纪要、方案初稿和汇报材料。我们把各岗位的写作规范和常用素材整理成可反复使用的提示词和 Skill，新人也能写出合规的初稿。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
-            <article class="cap-pane" id="marketing" data-i="3"><div class="kicker">04 · 智能营销 / AI MARKETING SOLUTIONS</div><h2 data-en="AI marketing solutions">AI智能营销解决方案</h2><div class="cap-stat"><b>GEO + SEO</b><span data-en="brand visibility tracked in AI search and model answers">跟踪品牌在 AI 搜索与大模型回答中的露出</span></div><p data-en="A closed marketing loop: market and customer insight into industry trends, competitor moves and customer needs; support for marketing decisions and the strategy that follows; posts and short videos produced at scale and distributed across channels; and GEO and SEO monitoring of how your brand appears in AI search and model answers, reviewed against campaign data to refine the next round.">实现营销全链路闭环：通过市场及用户洞察，深度研判行业走向、竞品动向与用户需求；赋能营销决策，制定对应营销策略；规模化生产图文、短视频内容，多渠道分发；同步落地 GEO 与 SEO 监测，跟踪品牌在 AI 搜索、大模型回答中的露出情况，联动投放数据开展效果复盘，迭代优化后续营销动作。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
-          </div>
+          <div class="cap-medias"><div class="cap-media active" data-i="0"><video muted loop playsinline preload="metadata" data-src="assets/videos/capability-agent.mp4" aria-label="智能体定制 / CUSTOM AI AGENTS"></video><span class="idx">01 / 04</span></div><div class="cap-media" data-i="1"><video muted loop playsinline preload="none" data-src="assets/videos/capability-tools.mp4" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT"></video><span class="idx">02 / 04</span></div><div class="cap-media" data-i="2"><video muted loop playsinline preload="none" data-src="assets/videos/capability-writing.mp4" aria-label="智能写作 / AI WRITING"></video><span class="idx">03 / 04</span></div><div class="cap-media" data-i="3"><video muted loop playsinline preload="none" data-src="assets/videos/capability-marketing.mp4" aria-label="AI 智能营销 / AI MARKETING"></video><span class="idx">04 / 04</span></div></div>
+          <div class="cap-panes"><article class="cap-pane active" id="agent" data-i="0"><div class="kicker">01 · 智能体定制 / CUSTOM AI AGENTS</div><h2 data-en="Custom agents built on your enterprise knowledge base">基于企业知识库构建<span style="white-space:nowrap">定制化智能体</span></h2><p class="cap-body" data-en="We connect your knowledge base, business rules and team roles to an agent. Given a task, it looks things up, applies your rules, uses the right tools and hands the result to the right person. It can run on your own servers, so data stays in-house.">把企业的知识库、业务规则和岗位分工接进智能体。接到任务后，它先查资料、按规则判断，再调用工具完成操作，把结果交给对应的人。支持私有化部署，数据留在企业自己的服务器上。</p><ul class="cap-inc" data-label="包含"><li data-en="Knowledge base cleanup and retrieval tuning">知识库整理与检索调优</li><li data-en="Business rules and workflow design">业务规则与流程编排</li><li data-en="Tiered access and audit logs">权限分级与操作留痕</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="The agent system, a cleaned-up knowledge base, access and audit settings, and a maintenance guide.">智能体系统、整理好的知识库、权限与审计配置、维护说明。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article><article class="cap-pane" id="tools" data-i="1"><div class="kicker">02 · AI 工具开发 / AI TOOL DEVELOPMENT</div><h2 data-en="Efficient AI tools built on your workflows">基于工作流打造高效AI工具</h2><p class="cap-body" data-en="We break repetitive work into modules, connect data sources, APIs, forms and approvals, and build an internal tool your team uses every day. We work by project or by module, add AI to systems you already have, or deliver jointly with your IT team.">把重复性工作拆成模块，接上数据源、接口、表单和审批，做成团队每天都在用的内部工具。可以按项目或按模块开发，也可以在现有系统上加 AI 功能，或与贵司 IT 联合交付。</p><ul class="cap-inc" data-label="包含"><li data-en="Process mapping and module breakdown">流程梳理与模块拆分</li><li data-en="Data, API and approval integration">数据源、接口与审批对接</li><li data-en="AI features for existing systems">现有系统的 AI 功能扩展</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A production-ready internal tool, API documentation and user training.">可上线的内部工具、接口文档、使用培训。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article><article class="cap-pane" id="writing" data-i="2"><div class="kicker">03 · 智能写作 / AI WRITING</div><h2 data-en="AI writing">AI智能写作</h2><p class="cap-body" data-en="For official documents, reports, meeting minutes, draft proposals and briefings. We turn each role&#x27;s writing standards and source material into reusable prompts and Skills, so even new hires can produce first drafts that meet your standards.">适用于公文、报告、会议纪要、方案初稿和汇报材料。我们把各岗位的写作规范和常用素材整理成可反复使用的提示词和 Skill，新人也能写出符合规范的初稿。</p><ul class="cap-inc" data-label="包含"><li data-en="Writing standards for each role">岗位写作规范梳理</li><li data-en="A library of prompts and Skills">提示词与 Skill 库搭建</li><li data-en="Curated source material and model texts">常用素材与范文整理</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A writing Skill library, a prompt handbook and hands-on team training.">写作 Skill 库、提示词手册、团队实操培训。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article><article class="cap-pane" id="marketing" data-i="3"><div class="kicker">04 · 智能营销 / AI MARKETING SOLUTIONS</div><h2 data-en="AI marketing solutions">AI智能营销解决方案</h2><p class="cap-body" data-en="A closed marketing loop: market and customer insight into industry trends, competitor moves and customer needs; support for marketing decisions and the strategy that follows; posts and short videos produced at scale and distributed across channels; and GEO and SEO monitoring of how your brand appears in AI search and model answers, reviewed against campaign data to refine the next round.">实现营销全链路闭环：通过市场及用户洞察，深度研判行业走向、竞品动向与用户需求；赋能营销决策，制定对应营销策略；规模化生产图文、短视频内容，多渠道分发；同步落地 GEO 与 SEO 监测，跟踪品牌在 AI 搜索、大模型回答中的露出情况，联动投放数据开展效果复盘，迭代优化后续营销动作。</p><ul class="cap-inc" data-label="包含"><li data-en="Market and customer insight, marketing decisions">市场与用户洞察、营销决策</li><li data-en="Posts and short videos at scale, multi-channel distribution">图文与短视频规模化生产、多渠道分发</li><li data-en="GEO and SEO monitoring, performance reviews">GEO 与 SEO 监测、效果复盘</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A marketing strategy, a content production workflow, and monitoring and review reports.">营销策略方案、内容生产流程、监测与复盘报告。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article></div>
         </div>
       </div>
     </section>
 
-    <section class="cases" id="cases" data-section="cases">
+    <section class="cases" data-bg="#241a4a" id="cases" data-section="cases">
       <span class="node" data-node="cases" style="top:128px"><span class="node-label">02 · CASES</span></span>
       <div class="bigtext" aria-hidden="true">CASES</div>
       <div class="wrap">
@@ -373,16 +426,16 @@
       </div>
     </section>
 
-    <section class="info process" id="process" data-section="process">
+    <section class="info process" data-bg="#1c1a44" id="process" data-section="process">
       <span class="node" data-node="process" style="top:118px"><span class="node-label">03 · PROCESS</span></span>
       <div class="wrap">
         <div class="kicker">PROCESS · 合作流程</div><h2 class="sec-title reveal" data-en="How we work">合作流程</h2>
-        <div class="proc-panel"><div class="tl-track"><span class="tl-fill" id="tl-fill"></span></div><ol class="timeline" id="timeline"><li class="tl-step"><span class="tl-big" aria-hidden="true">01</span><span class="tl-num">01</span><b data-en="Discovery call">前期沟通</b><small data-en="Understand your goals">了解业务现状与目标</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">02</span><span class="tl-num">02</span><b data-en="Use-case assessment">场景判断</b><small data-en="Pick the right use cases">筛选值得做的 AI 场景</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">03</span><span class="tl-num">03</span><b data-en="Solution breakdown">方案拆解</b><small data-en="Break into modules">拆成可执行的模块</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">04</span><span class="tl-num">04</span><b data-en="Scope sign-off">范围确认</b><small data-en="Agree scope and timeline">确认内容、周期与报价</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">05</span><span class="tl-num">05</span><b data-en="Delivery">交付执行</b><small data-en="Train or build as planned">培训或开发按计划落地</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">06</span><span class="tl-num">06</span><b data-en="Review &amp; iterate">复盘优化</b><small data-en="Follow up and improve">跟进使用并持续改进</small></li></ol></div>
+        <div class="proc-panel"><div class="tl-track"><span class="tl-fill" id="tl-fill"></span></div><ol class="timeline" id="timeline"><li class="tl-step"><span class="tl-big" aria-hidden="true">01</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H9l-5 4z"/></svg><em>01</em></span><b data-en="Discovery call">前期沟通</b><small data-en="Understand your goals">了解业务现状与目标</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">02</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><em>02</em></span><b data-en="Use-case assessment">场景判断</b><small data-en="Pick the right use cases">筛选值得做的 AI 场景</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">03</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><em>03</em></span><b data-en="Solution breakdown">方案拆解</b><small data-en="Break into modules">拆成可执行的模块</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">04</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2.5 2.5L16 11"/></svg><em>04</em></span><b data-en="Scope sign-off">范围确认</b><small data-en="Agree scope and timeline">确认内容、周期与报价</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">05</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l4-1 10-10-3-3L6 15z"/><path d="M14 6l3 3"/></svg><em>05</em></span><b data-en="Delivery">交付执行</b><small data-en="Train or build as planned">培训或开发按计划落地</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">06</span><span class="tl-num"><svg class="tl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg><em>06</em></span><b data-en="Review &amp; iterate">复盘优化</b><small data-en="Follow up and improve">跟进使用并持续改进</small></li></ol></div>
         <div class="notes"><div class="note" data-en="&lt;b&gt;Before training&lt;/b&gt;, we interview your team, write a custom syllabus and set up the practice environment. We don't use generic slides."><b>培训前</b>，我们会先做访谈调研，按需定制课纲，准备好练习环境，不用通用课件。</div><div class="note" data-en="&lt;b&gt;After training&lt;/b&gt;, we help with assignments, review the results and follow up on how the tools are used."><b>培训后</b>，我们会辅导作业、评选成果，并跟进实际使用情况。</div></div>
       </div>
     </section>
 
-    <section class="info" id="models" data-section="models">
+    <section class="info" id="models" data-bg="#1f1840" data-section="models">
       <span class="node" data-node="models" style="top:118px"><span class="node-label">04 · ENGAGEMENTS</span></span>
       <div class="wrap">
         <div class="kicker">ENGAGEMENTS · 合作方式</div><h2 class="sec-title reveal" data-en="Ways to work with us">合作方式</h2>
@@ -392,7 +445,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact" data-section="contact" data-dark><div><div class="eyebrow">START WITH A REAL TASK</div><h2 class="reveal" data-en="Bring a real task and we'll build it with you">带一个实际任务来，<span style="white-space:nowrap">我们一起做出来</span></h2><p data-en="Based in Xi’an, working with clients across China.">公司在西安，客户遍布全国。</p><div class="contact-lines"><span data-en="Phone / WeChat">电话 / 微信</span>：<a href="tel:18046508566">18046508566</a><br><span data-en="Email">邮箱</span>：<a href="mailto:hello@zhaoqiao.ai">hello@zhaoqiao.ai</a></div><a class="contact-btn magnetic" id="contact-btn" href="tel:18046508566" data-en="Book a use-case diagnosis →">预约场景诊断 →</a></div></section>
+    <section class="contact" data-bg="#160f2c" id="contact" data-section="contact" data-dark><div><div class="eyebrow">START WITH A REAL TASK</div><h2 class="reveal" data-en="Bring a real task and we'll build it with you">带一个实际任务来，<span style="white-space:nowrap">我们一起做出来</span></h2><p data-en="Based in Xi’an, working with clients across China.">公司在西安，客户遍布全国。</p><div class="contact-lines"><span data-en="Phone / WeChat">电话 / 微信</span>：<a href="tel:18046508566">18046508566</a><br><span data-en="Email">邮箱</span>：<a href="mailto:hello@zhaoqiao.ai">hello@zhaoqiao.ai</a></div><a class="contact-btn magnetic" id="contact-btn" href="tel:18046508566" data-en="Book a use-case diagnosis →">预约场景诊断 →</a></div></section>
   </main>
   <footer class="footer"><span>西安昭桥智能科技有限公司 · ZHAOQIAO AI</span><span data-en="Connecting AI to real work.">连接 AI 与真实业务</span></footer>
 

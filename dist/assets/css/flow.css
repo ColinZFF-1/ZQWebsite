@@ -1,4 +1,4 @@
-/* preview-flow: fixed stacked screens, JS-driven continuous transitions (desktop only) */
+/* flow: fixed stacked screens, JS-driven continuous transitions (desktop only) */
 html.flow,html.flow body{overflow:hidden;height:100%;scroll-snap-type:none}
 html.flow .screen{position:fixed;inset:0;height:100vh;min-height:0;visibility:hidden;z-index:1}
 html.flow .screen.cur{visibility:visible}
@@ -9,7 +9,7 @@ html.flow .hero-bg video{transform-origin:50% 50%;will-change:transform}
 html.flow .cap-media{will-change:transform,opacity;transform-origin:50% 50%}
 html.flow .cap-media video{transform-origin:50% 50%}
 html.flow .wipe{display:none}
-.preview-tag{position:fixed;left:16px;bottom:14px;z-index:60;font:600 10px "Space Grotesk",sans-serif;letter-spacing:.2em;color:#FFD27A;background:rgba(20,16,50,.6);border:1px solid rgba(255,210,122,.4);padding:5px 10px;border-radius:99px}
+
 
 
 

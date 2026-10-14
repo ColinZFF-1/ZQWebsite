@@ -6,7 +6,7 @@
 
   /* i18n */
   const i18n=$$('[data-en]');i18n.forEach(el=>el.dataset.zh=el.innerHTML);
-  const zhTitle=document.title,enTitle='ZHAOQIAO AI — Connecting AI to real work';
+  const zhTitle=document.title,enTitle='ZHAOQIAO — AI for real business';
   function setLang(l){i18n.forEach(el=>el.innerHTML=l==='en'?el.dataset.en:el.dataset.zh);root.lang=l==='en'?'en':'zh-CN';document.title=l==='en'?enTitle:zhTitle;
     $('#lang-toggle').textContent=l==='en'?'中文':'EN';try{localStorage.setItem('zq-lang',l)}catch(e){}splitHero();splitTitles();fitTitle();requestAnimationFrame(layoutPath);}
   $('#lang-toggle').addEventListener('click',()=>setLang(root.lang==='en'?'zh':'en'));
@@ -15,12 +15,21 @@
   function splitHero(){const h=$('#hero-title');const t=h.textContent;h.setAttribute('aria-label',t);let i=0;
     h.innerHTML=[...t].map(c=>'<span class="ch" aria-hidden="true" style="--i:'+(i++)+'">'+(c===' '?'&nbsp;':c)+'</span>').join('');}
   function fitTitle(){const h=$('#hero-title');h.style.fontSize='100px';const w=h.scrollWidth,avail=Math.min(innerWidth-40,1180)*(innerWidth>900?.9:.96);
-    const max=root.lang==='en'?(innerWidth>900?60:40):(innerWidth>900?84:40);h.style.fontSize=Math.max(12,Math.min(max,100*avail/w)).toFixed(1)+'px';}
+    const max=root.lang==='en'?(innerWidth>900?60:22):(innerWidth>900?84:40);h.style.fontSize=Math.max(12,Math.min(max,100*avail/w)).toFixed(1)+'px';}
 
-  /* hero video keeps looping */
+  /* hero video: poster first, load full src when needed; prefer mobile file on mobile */
   const hv=$('.hero-video');
-  if(hv){hv.loop=true;hv.muted=true;const keep=()=>{if(hv.paused&&!document.hidden)hv.play().catch(()=>{});};
-    hv.addEventListener('ended',()=>{hv.currentTime=0;keep();});hv.addEventListener('pause',()=>setTimeout(keep,200));document.addEventListener('visibilitychange',keep);keep();}
+  if(hv){hv.loop=true;hv.muted=true;let loaded=false;
+    const loadHero=()=>{if(loaded)return;loaded=true;const mob=innerWidth<=700||matchMedia('(max-width:700px)').matches;
+      hv.src=hv.dataset[mob?'srcMobile':'srcDesktop']||hv.dataset.srcDesktop;hv.load();hv.play().catch(()=>{});};
+    const keep=()=>{if(!loaded)return;if(hv.paused&&!document.hidden)hv.play().catch(()=>{});};
+    hv.addEventListener('ended',()=>{hv.currentTime=0;keep();});hv.addEventListener('pause',()=>setTimeout(keep,200));
+    document.addEventListener('visibilitychange',keep);
+    const kick=()=>{loadHero();['pointerdown','keydown','touchstart','wheel'].forEach(ev=>removeEventListener(ev,kick));};
+    ['pointerdown','keydown','touchstart','wheel'].forEach(ev=>addEventListener(ev,kick,{passive:true,once:true}));
+    // auto-load shortly after first paint if connection is fine
+    const conn=navigator.connection;const save=conn&&(conn.saveData||/2g/i.test(conn.effectiveType||''));
+    if(!save)setTimeout(loadHero,reduce?0:600);}
 
   /* 案例媒体：键为案例编号 1-4，填 image 或 video（相对 dist/ 的路径）；留空显示占位。
      推荐：assets/cases/case-0N.webp，1600×1000（16:10）。加载失败自动回退占位。 */
@@ -39,7 +48,7 @@
 
   /* pager */
   const pager=$('#pager');screens.forEach((sc,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',sc.getAttribute('aria-label')||('Section '+(i+1)));
-    b.addEventListener('click',()=>sc.scrollIntoView({behavior:reduce?'auto':'smooth'}));pager.appendChild(b);});
+    b.addEventListener('click',()=>window.ZQgo?window.ZQgo(i):sc.scrollIntoView({behavior:reduce?'auto':'smooth'}));pager.appendChild(b);});
   const dots=$$('button',pager),wash=$('.bgwash'),navLinks=$$('.nav-links a');
 
   /* count-up */
@@ -56,10 +65,11 @@
     const nx=screens[i+1]&&$('.cap video',screens[i+1]);if(nx&&!nx.src){nx.preload='auto';nx.src=nx.dataset.src;}
     if(sc.classList.contains('cases')&&!sc.dataset.counted){sc.dataset.counted=1;$$('.count',sc).forEach(countUp);}
     if(sc.classList.contains('process'))procStart();else procStop();}
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)activate(e.target);});},{threshold:0.55});
+  if(!window.ZQ_FLOW){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)activate(e.target);});},{threshold:0.55});
   screens.forEach(s=>io.observe(s));
   // tall mobile screens may never reach 55%: fallback
-  addEventListener('scroll',()=>{const mid=innerHeight*.5;for(const s of screens){const r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>=mid){activate(s);break;}}},{passive:true});
+  addEventListener('scroll',()=>{const mid=innerHeight*.5;for(const s of screens){const r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>=mid){activate(s);break;}}},{passive:true});}
+  window.ZQactivate=activate;window.ZQscreens=screens;
 
   /* process: glowing path + comet + lit cards + particles */
   const proc=$('.proc'),base=$('#pp-base'),draw=$('#pp-draw'),comet=$('#pp-comet'),halo=$('#pp-halo'),steps=$$('.pstep');
@@ -89,7 +99,7 @@
     size();addEventListener('resize',size);
     if(!mob)addEventListener('pointermove',e=>{mx=e.clientX*dpr;my=e.clientY*dpr;},{passive:true});
     document.addEventListener('visibilitychange',()=>{on=!document.hidden;if(on)requestAnimationFrame(f);});
-    function f(t){if(!on)return;requestAnimationFrame(f);if(t-last<32)return;last=t;cx.clearRect(0,0,W,H);const R=140*dpr;
+    function f(t){if(!on)return;requestAnimationFrame(f);if(window.ZQ_BUSY||t-last<32)return;last=t;cx.clearRect(0,0,W,H);const R=140*dpr;
       for(const p of ps){p.y-=p.v;p.a+=.006;p.x+=Math.sin(p.a)*.12*dpr;if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
         const dx=p.x+p.ox-mx,dy=p.y+p.oy-my,d2=dx*dx+dy*dy;if(d2<R*R){const d=Math.sqrt(d2)||1,k=(1-d/R)*2.2;p.ox+=dx/d*k;p.oy+=dy/d*k;}
         p.ox*=.95;p.oy*=.95;cx.beginPath();cx.arc(p.x+p.ox,p.y+p.oy,p.r,0,6.283);cx.fillStyle=p.g?'rgba(255,210,122,.42)':'rgba(205,198,255,.32)';cx.fill();}}
@@ -101,7 +111,7 @@
     h.setAttribute('aria-label',h.textContent);walk(h);h.classList.remove('rv');});}
   /* page wipe */
   const wipe=$('#wipe');let firstAct=true;
-  function doWipe(c){if(reduce||firstAct){firstAct=false;return;}wipe.style.setProperty('--wc',c);wipe.classList.remove('go');void wipe.offsetWidth;wipe.classList.add('go');}
+  function doWipe(c){if(window.ZQ_FLOW)return;if(reduce||firstAct){firstAct=false;return;}wipe.style.setProperty('--wc',c);wipe.classList.remove('go');void wipe.offsetWidth;wipe.classList.add('go');}
   wipe.addEventListener('transitionend',()=>wipe.classList.remove('go'));
   /* init */
   const lang=(()=>{try{return new URLSearchParams(location.search).get('lang')||localStorage.getItem('zq-lang')||'zh'}catch(e){return 'zh'}})();

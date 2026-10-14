@@ -42,7 +42,7 @@
     capMedias.forEach((m,k)=>{m.classList.toggle('active',k===i);const v=$('video',m);if(k===i){loadVid(m).play().catch(()=>{});}else if(v&&v.dataset.loaded)v.pause();});
     capPanes.forEach((p,k)=>p.classList.toggle('active',k===i));capItems.forEach((l,k)=>l.classList.toggle('active',k===i));
     const li=capItems[i],dot=$('#cap-dot');if(li&&dot)dot.style.transform='translateY('+(li.offsetTop+li.offsetHeight/2-4)+'px)';
-    $('#caps-progress').textContent='0'+(i+1)+' / 04';
+    const cp=$('#caps-progress');if(cp)cp.textContent='0'+(i+1)+' / 04';
     const pane=capPanes[i];if(pane&&root.classList.contains('pinned'))$$('.count',pane).forEach(countUp);}
   // stacked mode: play videos when visible
   const vio=new IntersectionObserver(es=>es.forEach(e=>{if(root.classList.contains('pinned'))return;const v=loadVid(e.target);if(e.isIntersecting)v.play().catch(()=>{});else v.pause();}),{threshold:.3});
@@ -67,7 +67,7 @@
     nodes=$$('[data-node]').map(n=>({el:n,...docPos(n)}));
     const btn=docPos($('#contact-btn'));
     const cta=docPos($('.hero-ctas .btn-primary')),hb=docPos($('.hero'));const sx=cta.x,sy=cta.bottom+10;
-    let d='M'+sx+' '+sy+' C'+sx+' '+(hb.bottom-40)+' '+gx+' '+(sy+40)+' '+gx+' '+(hb.bottom+40);
+    let d='M'+gx+' '+(hb.bottom+24);
     nodes.forEach(n=>{d+=' L'+gx+' '+n.y;});
     const bl=$('#contact-btn').getBoundingClientRect().left+scrollX-8;d+=' L'+gx+' '+(btn.y-70)+' C'+gx+' '+btn.y+' '+(gx+40)+' '+btn.y+' '+(gx+90)+' '+btn.y+' L'+bl+' '+btn.y;
     base.setAttribute('d',d);draw.setAttribute('d',d);halo.setAttribute('d',d);
@@ -116,8 +116,7 @@
   tl.from('.hero-window',{opacity:0,duration:1.6,ease:'power2.out'})
     .from('.hero-kicker',{y:14,opacity:0,duration:.9},.2)
     .from('#hero-title .ch',{yPercent:100,opacity:0,duration:1,stagger:.03},.3)
-    .from('.hero-rule',{scaleX:0,opacity:0,duration:1},.8)
-    .from('.hero-sub',{y:14,opacity:0,duration:1},.85)
+        .from('.hero-sub',{y:14,opacity:0,duration:1},.85)
     .from('.hero-ctas .btn',{y:14,opacity:0,stagger:.08,duration:.9},1.05)
     .from('.hero-scroll',{opacity:0,duration:1},1.4);
   // hero copy fades as you leave (opacity only, video untouched)
@@ -126,7 +125,7 @@
   // background colour transitions between sections
   $$('[data-bg]').forEach(sec=>ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',onToggle:st=>{if(st.isActive)gsap.to('.bgwash',{backgroundColor:sec.dataset.bg,duration:1.2,ease:'power2.out',overwrite:true});}}));
   // kicker lines draw, section content staggers in
-  $$('.kicker').forEach(k=>gsap.from(k,{opacity:0,x:-12,duration:.9,ease:'expo.out',scrollTrigger:{trigger:k,start:'top 90%'}}));
+  $$('.kicker:not(.cap-pane .kicker)').forEach(k=>gsap.from(k,{opacity:0,x:-12,duration:.9,ease:'expo.out',scrollTrigger:{trigger:k,start:'top 90%'}}));
   // contact: mask wipe
   gsap.fromTo('.contact',{clipPath:'inset(0% 5% 0% 5% round 48px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:'.contact',start:'top bottom',end:'top 30%',scrub:.6}});
   // cases: clip reveal
@@ -151,13 +150,10 @@
 
   // capabilities storytelling
   const mm=gsap.matchMedia();
-  mm.add('(min-width: 901px)',()=>{root.classList.add('pinned');setCap(0);
-    const st=ScrollTrigger.create({trigger:'#capabilities',start:'top top',end:'+='+(innerHeight*3),pin:true,anticipatePin:1,
-      onUpdate:s=>setCap(Math.min(3,Math.floor(s.progress*4*0.999)))});
-    capItems.forEach((li,i)=>li.addEventListener('click',()=>{const y=st.start+(st.end-st.start)*(i+.5)/4;lenis?lenis.scrollTo(y):scrollTo(0,y);}));
-    return()=>{root.classList.remove('pinned');capActive=-1;};});
-  mm.add('(max-width: 900px)',()=>{setCap(0);capPanes.forEach(p=>$$('.count',p).forEach(el=>ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>countUp(el)})));});
+  mm.add('(min-width: 0px)',()=>{capPanes.forEach(p=>$$('.count',p).forEach(el=>ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>countUp(el)})));});
 
+  $$('.cap-pane').forEach(p=>gsap.from(p.children,{y:16,opacity:0,stagger:.08,duration:.9,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 82%'}}));
+  $$('.cap-media').forEach(m=>gsap.fromTo(m,{opacity:0,clipPath:'inset(8% 8% 8% 8% round 24px)'},{opacity:1,clipPath:'inset(0% 0% 0% 0% round 24px)',duration:1.3,ease:'expo.out',scrollTrigger:{trigger:m,start:'top 85%'}}));
   ScrollTrigger.addEventListener('refresh',()=>{layoutLine();});
   addEventListener('load',()=>ScrollTrigger.refresh());
   navState();ScrollTrigger.refresh();

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <div class="bgwash" aria-hidden="true"></div>
+  <div class="bgwash" aria-hidden="true"></div><canvas class="fx" id="fx" aria-hidden="true"></canvas><div class="wipe" id="wipe" aria-hidden="true"></div>
   <header class="nav" id="site-nav">
     <a class="brand" href="#top" aria-label="昭桥 ZHAOQIAO AI"><span class="brand-mark" id="brand-mark">ZQ</span><span class="brand-copy"><span class="brand-cn">昭桥智能</span><span class="brand-en">ZHAOQIAO</span></span></a>
     <nav class="nav-links" aria-label="Primary navigation"><a href="#agent" data-en="Capabilities">能力</a><a href="#cases" data-en="Cases">案例</a><a href="#process" data-en="Process">流程</a><a href="#models" data-en="Engagements">合作方式</a><a href="#contact" data-en="Contact">联系</a></nav>
@@ -20,7 +20,7 @@
   </header>
   <nav class="pager" id="pager" aria-label="Sections"></nav>
   <main id="top" class="page">
-    <section class="screen hero" data-screen data-bg="#1d1636" data-dark aria-label="Hero">
+    <section class="screen hero" data-screen data-bg="#2a2763" data-dark aria-label="Hero">
       <div class="hero-bg"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.webp" aria-label="A miniature glass office ecosystem connected by AI"><source src="assets/videos/hero-mobile.mp4" type="video/mp4" media="(max-width: 700px)"><source src="assets/videos/hero-1080.mp4" type="video/mp4"></video></div>
       <div class="hero-head wrap">
         <div class="hero-kicker"><span class="pill">ZHAOQIAO AI</span> 西安昭桥智能科技</div>
@@ -31,39 +31,39 @@
       <div class="hero-scroll" aria-hidden="true">SCROLL</div>
     </section>
     
-    <section class="screen cap" data-screen data-bg="#1f1840" aria-label="智能体定制 / CUSTOM AI AGENTS">
+    <section class="screen cap" data-screen data-bg="#34318a" aria-label="智能体定制 / CUSTOM AI AGENTS">
       <div class="cap-grid wrap">
         <div class="cap-media"><video muted loop playsinline preload="none" poster="assets/scene-agent.webp" data-src="assets/videos/capability-agent.mp4" aria-label="智能体定制 / CUSTOM AI AGENTS"></video><span class="idx">01 / 04</span></div>
         <article class="cap-pane" id="agent" data-i="0"><div class="kicker"><span class="num">01</span><span class="of">/ 04</span>智能体定制 / CUSTOM AI AGENTS</div><h2 data-en="Custom agents built on your enterprise knowledge base">基于企业知识库构建<span style="white-space:nowrap">定制化智能体</span></h2><p class="cap-body" data-en="We connect your knowledge base, business rules and team roles to an agent. Given a task, it looks things up, applies your rules, uses the right tools and hands the result to the right person. It can run on your own servers, so data stays in-house.">把企业的知识库、业务规则和岗位分工接进智能体。接到任务后，它先查资料、按规则判断，再调用工具完成操作，把结果交给对应的人。支持私有化部署，数据留在企业自己的服务器上。</p><ul class="cap-inc" data-label="包含"><li data-en="Knowledge base cleanup and retrieval tuning">知识库整理与检索调优</li><li data-en="Business rules and workflow design">业务规则与流程编排</li><li data-en="Tiered access and audit logs">权限分级与操作留痕</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="The agent system, a cleaned-up knowledge base, access and audit settings, and a maintenance guide.">智能体系统、整理好的知识库、权限与审计配置、维护说明。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
       </div>
     </section>
-    <section class="screen cap rev" data-screen data-bg="#211946" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT">
+    <section class="screen cap rev" data-screen data-bg="#272560" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT">
       <div class="cap-grid wrap">
         <div class="cap-media"><video muted loop playsinline preload="none" poster="assets/scene-tools.webp" data-src="assets/videos/capability-tools.mp4" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT"></video><span class="idx">02 / 04</span></div>
         <article class="cap-pane" id="tools" data-i="1"><div class="kicker"><span class="num">02</span><span class="of">/ 04</span>AI 工具开发 / AI TOOL DEVELOPMENT</div><h2 data-en="Efficient AI tools built on your workflows">基于工作流打造高效AI工具</h2><p class="cap-body" data-en="We break repetitive work into modules, connect data sources, APIs, forms and approvals, and build an internal tool your team uses every day. We work by project or by module, add AI to systems you already have, or deliver jointly with your IT team.">把重复性工作拆成模块，接上数据源、接口、表单和审批，做成团队每天都在用的内部工具。可以按项目或按模块开发，也可以在现有系统上加 AI 功能，或与贵司 IT 联合交付。</p><ul class="cap-inc" data-label="包含"><li data-en="Process mapping and module breakdown">流程梳理与模块拆分</li><li data-en="Data, API and approval integration">数据源、接口与审批对接</li><li data-en="AI features for existing systems">现有系统的 AI 功能扩展</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A production-ready internal tool, API documentation and user training.">可上线的内部工具、接口文档、使用培训。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
       </div>
     </section>
-    <section class="screen cap" data-screen data-bg="#1e1a44" aria-label="智能写作 / AI WRITING">
+    <section class="screen cap" data-screen data-bg="#34318a" aria-label="智能写作 / AI WRITING">
       <div class="cap-grid wrap">
         <div class="cap-media"><video muted loop playsinline preload="none" poster="assets/scene-writing.webp" data-src="assets/videos/capability-writing.mp4" aria-label="智能写作 / AI WRITING"></video><span class="idx">03 / 04</span></div>
         <article class="cap-pane" id="writing" data-i="2"><div class="kicker"><span class="num">03</span><span class="of">/ 04</span>智能写作 / AI WRITING</div><h2 data-en="AI writing">AI智能写作</h2><p class="cap-body" data-en="For official documents, reports, meeting minutes, draft proposals and briefings. We turn each role&#x27;s writing standards and source material into reusable prompts and Skills, so even new hires can produce first drafts that meet your standards.">适用于公文、报告、会议纪要、方案初稿和汇报材料。我们把各岗位的写作规范和常用素材整理成可反复使用的提示词和 Skill，新人也能写出符合规范的初稿。</p><ul class="cap-inc" data-label="包含"><li data-en="Writing standards for each role">岗位写作规范梳理</li><li data-en="A library of prompts and Skills">提示词与 Skill 库搭建</li><li data-en="Curated source material and model texts">常用素材与范文整理</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A writing Skill library, a prompt handbook and hands-on team training.">写作 Skill 库、提示词手册、团队实操培训。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
       </div>
     </section>
-    <section class="screen cap rev" data-screen data-bg="#231a48" aria-label="AI 智能营销 / AI MARKETING">
+    <section class="screen cap rev" data-screen data-bg="#272560" aria-label="AI 智能营销 / AI MARKETING">
       <div class="cap-grid wrap">
         <div class="cap-media"><video muted loop playsinline preload="none" poster="assets/scene-marketing.webp" data-src="assets/videos/capability-marketing.mp4" aria-label="AI 智能营销 / AI MARKETING"></video><span class="idx">04 / 04</span></div>
         <article class="cap-pane" id="marketing" data-i="3"><div class="kicker"><span class="num">04</span><span class="of">/ 04</span>智能营销 / AI MARKETING SOLUTIONS</div><h2 data-en="AI marketing solutions">AI智能营销解决方案</h2><p class="cap-body" data-en="A closed marketing loop: market and customer insight into industry trends, competitor moves and customer needs; support for marketing decisions and the strategy that follows; posts and short videos produced at scale and distributed across channels; and GEO and SEO monitoring of how your brand appears in AI search and model answers, reviewed against campaign data to refine the next round.">实现营销全链路闭环：通过市场及用户洞察，深度研判行业走向、竞品动向与用户需求；赋能营销决策，制定对应营销策略；规模化生产图文、短视频内容，多渠道分发；同步落地 GEO 与 SEO 监测，跟踪品牌在 AI 搜索、大模型回答中的露出情况，联动投放数据开展效果复盘，迭代优化后续营销动作。</p><ul class="cap-inc" data-label="包含"><li data-en="Market and customer insight, marketing decisions">市场与用户洞察、营销决策</li><li data-en="Posts and short videos at scale, multi-channel distribution">图文与短视频规模化生产、多渠道分发</li><li data-en="GEO and SEO monitoring, performance reviews">GEO 与 SEO 监测、效果复盘</li></ul><p class="cap-deliv"><b data-en="Deliverables">交付</b><span data-en="A marketing strategy, a content production workflow, and monitoring and review reports.">营销策略方案、内容生产流程、监测与复盘报告。</span></p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
       </div>
     </section>
-    <section class="screen cases" id="cases" data-screen data-bg="#241a4a" aria-label="Cases">
+    <section class="screen cases" id="cases" data-screen data-bg="#3a3790" aria-label="Cases">
       <div class="wrap">
         <div class="sec-head"><div><div class="kicker">CASES · 交付案例</div><h2 class="sec-title" data-en="Selected projects">交付案例</h2></div><p class="sec-note" data-en="All real projects. Client names are withheld; figures come from project records.">以下均为真实项目。客户名称已隐去，数据取自项目记录。</p></div>
         <!-- 案例图片：把场景图放到 assets/cases/case-01.webp … case-04.webp（1600×1000，16:10）即自动显示；也可在 assets/js/site.js 的 CASE_MEDIA 或 .case-media 的 data-image / data-video 上改路径。加载失败时自动显示占位。 -->
         <div class="case-grid"><article class="case-card c1" data-case="1"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="500" data-dec="0" data-suffix="+">500+</b><span data-en="repair cases">维修案例</span></div><div class="case-type" data-en="CASE 01 · AI AGENT">案例 01 · 智能体定制</div><h3 data-en="Maintenance agent for a property services company">某物业服务企业的维修智能体</h3><p data-en="A privately deployed agent with 500+ repair cases and 103 standards that drafts repair plans and traces liability.">私有化部署，录入 500+ 维修案例和 103 条规范，自动给出维修方案并追溯责任。</p></div></article><article class="case-card c2" data-case="2"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="60" data-dec="0" data-suffix="">60</b><span data-en="participants">名学员</span></div><div class="case-type" data-en="CASE 02 · IN-HOUSE TRAINING">案例 02 · 企业内训</div><h3 data-en="Generative AI tools workshop for a real-estate group">某房地产集团的生成式 AI 工具实战课</h3><p data-en="A half-day hands-on session for about 60 people across marketing, design, copywriting and management.">半天实战课，覆盖市场、设计、文案和管理层约 60 名学员。</p></div></article><article class="case-card c3" data-case="3"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="7" data-dec="0" data-suffix="">7</b><span data-en="cohorts">期训练营</span></div><div class="case-type" data-en="CASE 03 · BOOTCAMPS">案例 03 · 训练营</div><h3 data-en="University &amp; judicial AI bootcamps">高校与司法 AI 训练营</h3><p data-en="4 university cohorts (~200 people) and 3 judicial cohorts (~100 people), with coaching and final reviews.">高校 4 期近 200 人、司法 3 期近 100 人，带练、点评并结营验收。</p></div></article><article class="case-card c4" data-case="4"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="87.5" data-dec="1" data-suffix="%">87.5%</b><span data-en="lower monthly cost">月度成本下降</span></div><div class="case-type" data-en="CASE 04 · SYSTEM DELIVERY">案例 04 · 系统落地</div><h3 data-en="AI content-review &amp; risk-control system">智能审核与风控系统</h3><p data-en="Replaced much of the manual review work, cutting monthly cost by about 87.5%.">替代大量人工审核，月度成本下降约 87.5%。</p></div></article></div>
       </div>
     </section>
-    <section class="screen process" id="process" data-screen data-bg="#1c1a44" aria-label="Process">
-      <canvas class="particles" id="particles" aria-hidden="true"></canvas>
+    <section class="screen process" id="process" data-screen data-bg="#24215a" aria-label="Process">
+      
       <div class="wrap">
         <div class="sec-head"><div><div class="kicker">PROCESS · 合作流程</div><h2 class="sec-title" data-en="How we work">合作流程</h2></div></div>
         <div class="proc">
@@ -73,7 +73,7 @@
         <div class="notes pnotes"><div class="note" data-en="&lt;b&gt;Before training&lt;/b&gt;, we interview your team, write a custom syllabus and set up the practice environment. We don't use generic slides."><b>培训前</b>，我们会先做访谈调研，按需定制课纲，准备好练习环境，不用通用课件。</div><div class="note" data-en="&lt;b&gt;After training&lt;/b&gt;, we help with assignments, review the results and follow up on how the tools are used."><b>培训后</b>，我们会辅导作业、评选成果，并跟进实际使用情况。</div></div>
       </div>
     </section>
-    <section class="screen contact" id="contact" data-screen data-bg="#160f2c" data-dark aria-label="Contact">
+    <section class="screen contact" id="contact" data-screen data-bg="#1f1c4f" data-dark aria-label="Contact">
       <div class="wrap contact-grid">
         <div class="contact-main"><div class="eyebrow">START WITH A REAL TASK</div><h2 class="reveal" data-en="Bring a real task and we'll build it with you">带一个实际任务来，<span style="white-space:nowrap">我们一起做出来</span></h2><p data-en="Based in Xi’an, working with clients across China.">公司在西安，客户遍布全国。</p><div class="contact-lines"><span data-en="Phone / WeChat">电话 / 微信</span>：<a href="tel:18046508566">18046508566</a><br><span data-en="Email">邮箱</span>：<a href="mailto:hello@zhaoqiao.ai">hello@zhaoqiao.ai</a></div><a class="contact-btn magnetic" id="contact-btn" href="tel:18046508566" data-en="Book a use-case diagnosis →">预约场景诊断 →</a></div>
         <div class="engage" id="models">

@@ -189,24 +189,134 @@
       .footer{display:block;line-height:1.8}.footer span{display:block}
     }
     @media (max-width:560px){.models{grid-template-columns:1fr}.hero-links text{display:none}.caps,.cases,.info{padding-top:84px}.cap-pane{padding-bottom:52px}}
+    /* ===== r8: tech-purple glass theme, gold accent ===== */
+    :root{--bg:#1d1636;--bg2:#251c45;--txt:#f1edff;--mut:rgba(226,219,250,.68);--glass:rgba(255,255,255,.06);--gb:rgba(255,255,255,.13);--accent:#FFD27A}
+    html{background:var(--bg)}
+    body{color:var(--txt);background-color:var(--bg);
+      background-image:radial-gradient(1200px 700px at 85% 10%,rgba(154,142,195,.22),transparent 60%),radial-gradient(900px 600px at 0% 45%,rgba(121,167,217,.14),transparent 60%),radial-gradient(1000px 700px at 90% 85%,rgba(160,110,230,.16),transparent 60%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:auto,auto,auto,96px 96px,96px 96px;background-attachment:fixed,fixed,fixed,scroll,scroll}
+    .kicker,.cases-note,.cap-pane p,.cap-stat span,.tl-step small,.model p,.price,.case-info p,.caps-progress,.cap-list small{color:var(--mut)}
+    .nav.is-dark,.nav.scrolled{color:#fff;background:rgba(29,22,54,.55);backdrop-filter:blur(18px) saturate(1.2);border-color:rgba(255,255,255,.1)}
+    .node{border-color:rgba(255,255,255,.35);background:var(--bg)}
+    .node.on{background:var(--accent);border-color:#fff;box-shadow:0 0 0 5px rgba(255,210,122,.18),0 0 18px rgba(255,210,122,.95)}
+    .node-label{color:var(--accent)}
+    .zq-line .base{stroke:rgba(255,255,255,.12);stroke-width:1.5;stroke-dasharray:4 7}
+    .zq-line .halo{fill:none;stroke:rgba(255,190,90,.28);stroke-width:12;stroke-linecap:round;filter:blur(6px)}
+    .zq-line .draw{stroke:var(--accent);stroke-width:3.5;filter:drop-shadow(0 0 4px rgba(255,210,122,.95)) drop-shadow(0 0 14px rgba(255,170,60,.55))}
+    .zq-line .tip{fill:#fff;filter:drop-shadow(0 0 6px #FFD27A) drop-shadow(0 0 16px #ffb547)}
+    /* hero hierarchy */
+    .hero{background:transparent}
+    .hero-kicker{display:flex;justify-content:center;align-items:center;gap:12px;letter-spacing:.28em;opacity:.9}
+    .hero-kicker .pill{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,210,122,.55);color:var(--accent);background:rgba(255,210,122,.08);letter-spacing:.24em}
+    .hero h1{font-size:64px;line-height:1.08;letter-spacing:-.02em;text-shadow:0 6px 40px rgba(120,90,220,.45)}
+    html[lang="en"] .hero h1{white-space:nowrap;max-width:none;font-size:52px}
+    .hero h1 .bar{color:var(--accent)}
+    .hero-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px auto 0}.hero-rule i{width:min(120px,18vw);height:1px;background:linear-gradient(90deg,transparent,rgba(255,210,122,.8))}.hero-rule i:last-child{transform:scaleX(-1)}.hero-rule b{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+    .hero-sub{margin-top:14px;font-size:clamp(15px,1.4vw,20px)}
+    .hero-window{border-color:rgba(255,255,255,.22);box-shadow:0 40px 120px rgba(10,5,30,.55),0 0 0 6px rgba(255,255,255,.04),0 0 80px rgba(154,142,195,.25)}
+    .hero-links path{stroke:rgba(255,210,122,.75)}.hero-links circle{fill:var(--accent);filter:drop-shadow(0 0 6px #FFD27A)}
+    .btn-primary{background:var(--accent);border-color:var(--accent);color:#2a1f10}
+    /* capabilities: video-only, distinct framing */
+    .caps{background:transparent}
+    .cap-media{background:#2a2050;border:1px solid var(--gb);box-shadow:0 40px 100px rgba(8,4,26,.5)}
+    .cap-media video{opacity:1;transition:none}
+    .cap-media .tint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;opacity:.38}
+    .cap-media .idx{background:rgba(29,22,54,.6);color:#fff;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);z-index:3}
+    .cap-media video{animation:kb 18s ease-in-out infinite alternate}
+    @keyframes kb{to{transform:var(--kb-to)}}
+    .m-agent{border-radius:28px}.m-agent video{object-position:30% 40%;transform:scale(1.25);--kb-to:scale(1.35) translate(2%,1%)}.m-agent .tint{background:linear-gradient(135deg,#3d6bd6,#7f73d9)}
+    .m-tools{border-radius:6px;clip-path:polygon(28px 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%,0 28px)}.m-tools video{object-position:15% 30%;transform:scale(1.65);transform-origin:20% 30%;--kb-to:scale(1.8) translate(-2%,1%)}.m-tools .tint{background:linear-gradient(160deg,#18b5c9,#3d5bd6);opacity:.42}
+    .m-tools:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(140,230,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(140,230,255,.12) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+    .corner{position:absolute;width:22px;height:22px;border:2px solid #8ce6ff;z-index:3}.corner.tl{left:14px;top:14px;border-right:0;border-bottom:0}.corner.tr{right:14px;top:14px;border-left:0;border-bottom:0}.corner.bl{left:14px;bottom:14px;border-right:0;border-top:0}.corner.br{right:14px;bottom:14px;border-left:0;border-top:0}
+    .m-writing{border-radius:14px 14px 60px 14px}.m-writing video{object-position:85% 70%;transform:scale(1.55);transform-origin:80% 70%;filter:sepia(.25) saturate(1.1);--kb-to:scale(1.7) translate(1%,-2%)}.m-writing .tint{background:linear-gradient(135deg,#f4c3a5,#c98bd8);opacity:.42}
+    .m-mkt{border-radius:60px 14px 14px 14px}.m-mkt video{object-position:50% 15%;transform:scale(1.4);transform-origin:50% 20%;filter:saturate(1.25);--kb-to:scale(1.55) translate(-1%,2%)}.m-mkt .tint{background:linear-gradient(135deg,#d64fb8,#8a5cf0);opacity:.4}
+    .m-mkt:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px);pointer-events:none}
+    .ov{position:absolute;z-index:3;font-family:var(--sans);color:#fff}
+    .ov-chat{left:22px;bottom:22px;display:flex;flex-direction:column;gap:8px;max-width:72%}
+    .ov-chat span{padding:10px 14px;border-radius:16px;font-size:13px;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25)}
+    .ov-chat .q{background:rgba(29,22,54,.62);border-bottom-left-radius:4px;align-self:flex-start}
+    .ov-chat .a{background:rgba(255,210,122,.9);color:#2a1f10;font-weight:700;border-bottom-right-radius:4px;align-self:flex-end}
+    .ov-flow{left:50%;bottom:24px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:10px 12px;border-radius:12px;background:rgba(10,30,50,.55);border:1px solid rgba(140,230,255,.4);backdrop-filter:blur(10px);white-space:nowrap}
+    .ov-flow i{font-style:normal;font-size:12px;padding:5px 10px;border-radius:8px;background:rgba(140,230,255,.15);border:1px solid rgba(140,230,255,.5)}
+    .ov-flow b{width:18px;height:2px;background:#8ce6ff;box-shadow:0 0 8px #8ce6ff}
+    .ov-doc{right:22px;top:54px;width:min(240px,46%);padding:16px;border-radius:10px;background:rgba(255,250,244,.88);color:#3a2d2a;box-shadow:0 18px 40px rgba(40,20,10,.3);display:flex;flex-direction:column;gap:8px}
+    .ov-doc b{font-size:12px;margin-bottom:4px}.ov-doc span{height:6px;border-radius:3px;background:rgba(58,45,42,.18)}.ov-doc span.s{width:60%}
+    .ov-doc .caret{width:2px;height:12px;background:#c98bd8;animation:blink 1s steps(1) infinite}
+    .ov-chan{left:22px;top:22px;display:flex;flex-wrap:wrap;gap:6px;max-width:70%}
+    .ov-chan i{font-style:normal;font-size:12px;padding:6px 11px;border-radius:999px;background:rgba(214,79,184,.35);border:1px solid rgba(255,190,240,.55);backdrop-filter:blur(8px)}
+    .m-mkt .bars{position:absolute;right:22px;bottom:22px;z-index:3;display:flex;align-items:flex-end;gap:5px;height:64px;padding:10px;border-radius:12px;background:rgba(29,22,54,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2)}
+    .m-mkt .bars span{width:9px;border-radius:3px;background:linear-gradient(#FFD27A,#d64fb8)}.m-mkt .bars span:nth-child(1){height:30%}.m-mkt .bars span:nth-child(2){height:48%}.m-mkt .bars span:nth-child(3){height:40%}.m-mkt .bars span:nth-child(4){height:70%}.m-mkt .bars span:nth-child(5){height:92%}
+    .cap-stat{border-color:rgba(255,255,255,.14)}.cap-stat b{color:var(--accent)}
+    .copy-link{color:var(--accent)}
+    html.pinned .cap-stage{grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);grid-template-rows:auto 1fr;column-gap:clamp(32px,4vw,64px);row-gap:22px;align-items:start}
+    html.pinned .cap-medias{grid-column:1;grid-row:1 / span 2;align-self:center}
+    html.pinned .cap-list{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding:0}
+    html.pinned .cap-list:before,.cap-dot{display:none}
+    .cap-list li{padding:10px 12px;border-radius:12px;border:1px solid transparent}
+    .cap-list li.active{background:var(--glass);border-color:rgba(255,210,122,.45);box-shadow:inset 3px 0 0 var(--accent)}
+    .cap-list b{font-size:14px}
+    html.pinned .cap-panes{grid-column:2;grid-row:2;min-height:360px}
+    html.pinned .cap-pane{padding:24px;border-radius:20px;background:var(--glass);border:1px solid var(--gb);backdrop-filter:blur(16px);bottom:auto}
+    html.pinned .cap-pane h2{font-size:clamp(22px,2vw,30px)}
+    /* cases climax */
+    .cases{overflow:hidden}
+    .bigtext{position:absolute;right:-2vw;top:40px;font-family:var(--mono);font-weight:700;font-size:clamp(120px,22vw,340px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,210,122,.16);pointer-events:none;user-select:none}
+    .case-grid{grid-template-columns:repeat(12,1fr);gap:18px}
+    .case-card{grid-column:span 6;background:var(--glass);border:1px solid var(--gb);backdrop-filter:blur(16px);display:flex;flex-direction:column;border-radius:24px}
+    .case-card.c1{grid-column:span 7;grid-row:span 2}.case-card.c2{grid-column:span 5}.case-card.c3{grid-column:span 5}.case-card.c4{grid-column:span 12;flex-direction:row}
+    .case-card.c4 .case-media{flex:0 0 46%;aspect-ratio:auto;min-height:240px}.case-card.c1 .case-media{aspect-ratio:auto;flex:1;min-height:300px}
+    .case-card:hover{box-shadow:0 30px 80px rgba(8,4,26,.55),0 0 0 1px rgba(255,210,122,.4)}
+    .case-media{background:linear-gradient(135deg,rgba(154,142,195,.22),rgba(121,167,217,.12))}
+    .case-media:before{background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px)}
+    .media-ph{color:rgba(255,255,255,.55)}
+    .media-ph:before{content:"";position:absolute;width:54px;height:54px;border-radius:50%;border:1px dashed rgba(255,210,122,.6);top:calc(50% - 50px);left:calc(50% - 27px)}
+    .case-info h3{color:#fff}.case-type{color:var(--accent)}
+    .case-metric{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+    .case-metric b{font-family:var(--mono);font-size:clamp(40px,4.4vw,68px);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--accent);text-shadow:0 0 30px rgba(255,210,122,.35)}
+    .case-metric span{font-size:13px;color:var(--mut)}
+    /* process climax */
+    .process{overflow:hidden}
+    .proc-panel{position:relative;padding:48px 36px 40px;border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid var(--gb);backdrop-filter:blur(18px);box-shadow:0 40px 100px rgba(8,4,26,.45)}
+    .tl-track{position:absolute;left:calc(36px + 8.33% - 6px);right:calc(36px + 8.33% - 6px);top:calc(48px + 22px);height:4px;border-radius:2px;background:rgba(255,255,255,.1)}
+    .tl-fill{left:0;top:0;width:100%;height:100%;border-radius:2px;background:var(--accent);box-shadow:0 0 14px rgba(255,210,122,.9),0 0 30px rgba(255,170,60,.5);display:block}
+    .timeline{margin:0}.timeline:before{display:none}
+    .tl-big{position:absolute;left:50%;top:-34px;transform:translateX(-50%);font-family:var(--mono);font-weight:700;font-size:96px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);z-index:0;pointer-events:none}
+    .tl-num{background:var(--bg2);border-color:rgba(255,255,255,.3);color:#fff;transition:all .4s}
+    .tl-step.lit .tl-num{background:var(--accent);border-color:#fff;color:#2a1f10;box-shadow:0 0 0 6px rgba(255,210,122,.18),0 0 22px rgba(255,210,122,.8)}
+    .tl-step b{color:#fff}
+    .note,.model{background:var(--glass);border-color:var(--gb);color:var(--mut);backdrop-filter:blur(12px)}.note b,.model h3{color:#fff}.model .dur{color:var(--accent)}.model:hover{border-color:rgba(255,210,122,.5)}
+    .info,.cases{background:transparent}
+    .contact{background:radial-gradient(800px 500px at 50% 60%,rgba(154,142,195,.25),transparent 70%),#160f2c}
+    .contact-btn{background:var(--accent);color:#2a1f10}
+    .contact-btn.lit{box-shadow:0 0 0 6px rgba(255,210,122,.2),0 0 46px rgba(255,210,122,.75)}
+    .footer{background:#160f2c}
+    @media (max-width:900px){
+      .case-grid{grid-template-columns:1fr}.case-card,.case-card.c1,.case-card.c2,.case-card.c3,.case-card.c4{grid-column:auto;grid-row:auto;flex-direction:column}
+      .case-card.c4 .case-media,.case-card.c1 .case-media{flex:none;aspect-ratio:16/9;min-height:0}
+      .proc-panel{padding:28px 20px}.tl-track{left:calc(20px + 20px);right:auto;width:4px;top:44px;bottom:44px;height:auto}
+      .tl-big{left:auto;right:0;top:-6px;transform:none;font-size:56px}
+      .ov-doc{top:auto;bottom:16px;right:16px}.ov-chat span{font-size:11.5px}.ov-flow i{font-size:10.5px;padding:4px 7px}.ov-flow b{width:10px}
+      .hero h1{font-size:28px}
+    }
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
-  <header class="nav is-dark" id="site-nav">
+  <header class="nav is-dark always-dark" id="site-nav">
     <a class="brand" href="#top" aria-label="昭桥 ZHAOQIAO AI"><span class="brand-mark" id="brand-mark">ZQ</span><span class="brand-copy"><span class="brand-cn">昭桥智能</span><span class="brand-en">ZHAOQIAO</span></span></a>
     <nav class="nav-links" aria-label="Primary navigation"><a href="#agent" data-en="Capabilities">能力</a><a href="#cases" data-en="Cases">案例</a><a href="#process" data-en="Process">流程</a><a href="#models" data-en="Engagements">合作方式</a><a href="#contact" data-en="Contact">联系</a></nav>
     <div class="nav-right"><button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">EN</button><a class="nav-cta magnetic" href="#contact" data-en="Book a diagnosis →">预约诊断 →</a></div>
   </header>
 
   <main id="top" class="page">
-    <svg class="zq-line" id="zq-line" aria-hidden="true"><defs><linearGradient id="zqGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#79a7d9"/><stop offset=".5" stop-color="#9a8ec3"/><stop offset="1" stop-color="#79a7d9"/></linearGradient></defs><path class="base" id="zq-base"/><path class="draw" id="zq-draw"/><circle class="tip" id="zq-tip" r="3.5" cx="-20" cy="-20"/></svg>
+    <svg class="zq-line" id="zq-line" aria-hidden="true"><defs><linearGradient id="zqGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#79a7d9"/><stop offset=".5" stop-color="#9a8ec3"/><stop offset="1" stop-color="#79a7d9"/></linearGradient></defs><path class="base" id="zq-base"/><path class="halo" id="zq-halo"/><path class="draw" id="zq-draw"/><circle class="tip" id="zq-tip" r="3.5" cx="-20" cy="-20"/></svg>
 
     <section class="hero" data-section="top" data-dark>
       <div class="hero-bigword" aria-hidden="true">ZHAOQIAO</div>
       <div class="hero-head wrap">
-        <div class="hero-kicker">ZHAOQIAO AI · 西安昭桥智能科技</div>
+        <div class="hero-kicker"><span class="pill">ZHAOQIAO AI</span> 西安昭桥智能科技</div>
         <h1 id="hero-title" data-en="ZHAOQIAO AI — Connecting AI to real business scenarios">昭桥｜连接 AI 与真实业务场景</h1>
+        <div class="hero-rule" aria-hidden="true"><i></i><b></b><i></i></div>
         <p class="hero-sub" data-en="AI enablement training, use-case co-creation and hands-on system delivery for companies and institutions.">为企业与机构提供 AI 赋能培训、场景共创与<span style="white-space:nowrap">系统落地实践。</span></p>
       </div>
       <div class="hero-stage">
@@ -230,20 +340,24 @@
           <ol class="cap-list" id="cap-list"><span class="cap-dot" id="cap-dot"></span>
             <li class="active" data-i="0"><small>01</small><b data-en="Custom AI agents">智能体定制</b></li>
             <li data-i="1"><small>02</small><b data-en="AI tool development">AI 工具开发</b></li>
-            <li data-i="2"><small>03</small><b data-en="AI writing">智能写作</b></li>
-            <li data-i="3"><small>04</small><b data-en="AI for marketing">营销提效</b></li>
+            <li data-i="2"><small>03</small><b data-en="AI writing">AI智能写作</b></li>
+            <li data-i="3"><small>04</small><b data-en="AI marketing solutions">AI智能营销解决方案</b></li>
           </ol>
           <div class="cap-medias">
-            <div class="cap-media active" data-i="0"><img src="assets/scene-agent.webp" alt="智能体定制 / CUSTOM AI AGENTS" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/videos/capability-agent.mp4"></video><span class="idx">01 / 04</span></div>
-            <div class="cap-media" data-i="1"><img src="assets/scene-tools.webp" alt="AI 工具开发 / AI TOOL DEVELOPMENT" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/videos/capability-tools.mp4"></video><span class="idx">02 / 04</span></div>
-            <div class="cap-media" data-i="2"><img src="assets/scene-writing.webp" alt="智能写作 / AI WRITING" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/videos/capability-writing.mp4"></video><span class="idx">03 / 04</span></div>
-            <div class="cap-media" data-i="3"><img src="assets/scene-marketing.webp" alt="营销提效 / AI FOR MARKETING" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/videos/capability-marketing.mp4"></video><span class="idx">04 / 04</span></div>
+            <div class="cap-media m-agent active" data-i="0"><video muted loop playsinline preload="metadata" data-src="assets/videos/capability-agent.mp4" aria-label="智能体定制 / CUSTOM AI AGENTS"></video><div class="tint"></div>
+              <div class="ov ov-chat"><span class="q" data-en="Ask: liability rules for this repair?">提问：这次维修的保修责任怎么认定？</span><span class="a" data-en="Searched knowledge base · matched similar cases">已检索知识库 · 匹配相似案例</span></div><span class="idx">01 / 04 · AGENT</span></div>
+            <div class="cap-media m-tools" data-i="1"><video muted loop playsinline preload="none" data-src="assets/videos/capability-tools.mp4" aria-label="AI 工具开发 / AI TOOL DEVELOPMENT"></video><div class="tint"></div>
+              <div class="ov ov-flow"><i data-en="Data">数据源</i><b></b><i data-en="API">接口</i><b></b><i data-en="Form">表单</i><b></b><i data-en="Approval">审批</i></div><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="idx">02 / 04 · TOOLS</span></div>
+            <div class="cap-media m-writing" data-i="2"><video muted loop playsinline preload="none" data-src="assets/videos/capability-writing.mp4" aria-label="智能写作 / AI WRITING"></video><div class="tint"></div>
+              <div class="ov ov-doc"><b data-en="Report · Minutes · Proposal">公文 · 报告 · 会议纪要</b><span></span><span></span><span class="s"></span><em class="caret"></em></div><span class="idx">03 / 04 · WRITING</span></div>
+            <div class="cap-media m-mkt" data-i="3"><video muted loop playsinline preload="none" data-src="assets/videos/capability-marketing.mp4" aria-label="营销 / AI MARKETING"></video><div class="tint"></div>
+              <div class="ov ov-chan"><i data-en="Insight">洞察</i><i data-en="Decision">决策</i><i data-en="Content">图文 / 短视频</i><i>GEO · SEO</i></div><div class="bars"><span></span><span></span><span></span><span></span><span></span></div><span class="idx">04 / 04 · MARKETING</span></div>
           </div>
           <div class="cap-panes">
             <article class="cap-pane active" id="agent" data-i="0"><div class="kicker">01 · 智能体定制 / CUSTOM AI AGENTS</div><h2 data-en="Custom agents built on your enterprise knowledge base">基于企业知识库构建<span style="white-space:nowrap">定制化智能体</span></h2><div class="cap-stat"><b class="count" data-to="500" data-suffix="+">500+</b><span data-en="repair cases loaded into one delivered agent (Case 01)">维修案例接入已交付的智能体（案例 01）</span></div><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
             <article class="cap-pane" id="tools" data-i="1"><div class="kicker">02 · AI 工具开发 / AI TOOL DEVELOPMENT</div><h2 data-en="Efficient AI tools built on your workflows">基于工作流打造高效AI工具</h2><div class="cap-stat"><b class="count" data-to="87.5" data-dec="1" data-suffix="%">87.5%</b><span data-en="lower monthly cost on a delivered review system (Case 04)">已交付审核系统的月度成本降幅（案例 04）</span></div><p data-en="We break repetitive work into modules, connect data sources, APIs, forms and approvals, and build an internal tool your team uses every day. Development beyond training is handled by our engineering team, by project or by module. We can also add AI features to your existing systems or deliver jointly with your IT team.">我们把重复性工作拆成模块，接上数据源、接口、表单和审批，做成团队日常能用的内部工具。培训之外的开发需求由技术团队承接，可以按项目或模块做，也可以在现有系统上加 AI 功能，或和贵司 IT 联合交付。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
             <article class="cap-pane" id="writing" data-i="2"><div class="kicker">03 · 智能写作 / AI WRITING</div><h2 data-en="AI writing">AI智能写作</h2><div class="cap-stat"><b>Prompt + Skill</b><span data-en="writing standards turned into reusable assets">写作规范沉淀为可复用资产</span></div><p data-en="For official documents, reports, meeting minutes, draft proposals and briefings. We turn each role's writing standards and source material into reusable prompts and Skills, so new hires can write first drafts that meet your standards.">适用于公文、报告、会议纪要、方案初稿和汇报材料。我们把各岗位的写作规范和常用素材整理成可反复使用的提示词和 Skill，新人也能写出合规的初稿。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
-            <article class="cap-pane" id="marketing" data-i="3"><div class="kicker">04 · 营销提效 / AI FOR MARKETING</div><h2 data-en="AI marketing solutions">AI智能营销解决方案</h2><div class="cap-stat"><b>GEO + SEO</b><span data-en="brand visibility tracked in AI search and model answers">跟踪品牌在 AI 搜索与大模型回答中的露出</span></div><p data-en="A closed marketing loop: market and customer insight into industry trends, competitor moves and customer needs; support for marketing decisions and the strategy that follows; posts and short videos produced at scale and distributed across channels; and GEO and SEO monitoring of how your brand appears in AI search and model answers, reviewed against campaign data to refine the next round.">实现营销全链路闭环：通过市场及用户洞察，深度研判行业走向、竞品动向与用户需求；赋能营销决策，制定对应营销策略；规模化生产图文、短视频内容，多渠道分发；同步落地 GEO 与 SEO 监测，跟踪品牌在 AI 搜索、大模型回答中的露出情况，联动投放数据开展效果复盘，迭代优化后续营销动作。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
+            <article class="cap-pane" id="marketing" data-i="3"><div class="kicker">04 · 智能营销 / AI MARKETING SOLUTIONS</div><h2 data-en="AI marketing solutions">AI智能营销解决方案</h2><div class="cap-stat"><b>GEO + SEO</b><span data-en="brand visibility tracked in AI search and model answers">跟踪品牌在 AI 搜索与大模型回答中的露出</span></div><p data-en="A closed marketing loop: market and customer insight into industry trends, competitor moves and customer needs; support for marketing decisions and the strategy that follows; posts and short videos produced at scale and distributed across channels; and GEO and SEO monitoring of how your brand appears in AI search and model answers, reviewed against campaign data to refine the next round.">实现营销全链路闭环：通过市场及用户洞察，深度研判行业走向、竞品动向与用户需求；赋能营销决策，制定对应营销策略；规模化生产图文、短视频内容，多渠道分发；同步落地 GEO 与 SEO 监测，跟踪品牌在 AI 搜索、大模型回答中的露出情况，联动投放数据开展效果复盘，迭代优化后续营销动作。</p><a class="copy-link" href="#cases" data-en="See our work">查看交付案例</a></article>
           </div>
         </div>
       </div>
@@ -251,23 +365,19 @@
 
     <section class="cases" id="cases" data-section="cases">
       <span class="node" data-node="cases" style="top:128px"><span class="node-label">02 · CASES</span></span>
+      <div class="bigtext" aria-hidden="true">CASES</div>
       <div class="wrap">
         <div class="cases-head"><div><div class="kicker">CASES · 交付案例</div><h2 class="sec-title reveal" data-en="Selected projects">交付案例</h2></div><p class="cases-note" data-en="All real projects. Client names are withheld; figures come from project records.">以下均为真实项目。客户名称已隐去，数据取自项目记录。</p></div>
-        <!-- 案例媒体：在下方脚本 CASE_MEDIA 中按案例编号填 image（图片路径）或 video（mp4 路径），也可直接在 .case-media 上填 data-image / data-video。路径相对 dist/。 -->
-        <div class="case-grid">
-          <article class="case-card" data-case="1"><div class="case-media" data-image="" data-video=""><span class="media-ph">图片/视频待替换</span></div><div class="case-info"><div class="case-type" data-en="CASE 01 · AI AGENT">案例 01 · 智能体定制</div><h3 data-en="Maintenance agent for a property services company">某物业服务企业的维修智能体</h3><p data-en="A privately deployed agent with &lt;b class=&quot;count&quot; data-to=&quot;500&quot; data-suffix=&quot;+&quot;&gt;500+&lt;/b&gt; repair cases and &lt;b class=&quot;count&quot; data-to=&quot;103&quot;&gt;103&lt;/b&gt; standards that drafts repair plans and traces liability.">私有化部署，录入 <b class="count" data-to="500" data-suffix="+">500+</b> 维修案例和 <b class="count" data-to="103">103</b> 条规范，自动给出维修方案并追溯责任。</p></div></article>
-          <article class="case-card" data-case="2"><div class="case-media" data-image="" data-video=""><span class="media-ph">图片/视频待替换</span></div><div class="case-info"><div class="case-type" data-en="CASE 02 · IN-HOUSE TRAINING">案例 02 · 企业内训</div><h3 data-en="Generative AI tools workshop for a real-estate group">某房地产集团的生成式 AI 工具实战课</h3><p data-en="A half-day hands-on session for about &lt;b class=&quot;count&quot; data-to=&quot;60&quot;&gt;60&lt;/b&gt; people across marketing, design, copywriting and management.">半天实战课，覆盖市场、设计、文案和管理层约 <b class="count" data-to="60">60</b> 名学员。</p></div></article>
-          <article class="case-card" data-case="3"><div class="case-media" data-image="" data-video=""><span class="media-ph">图片/视频待替换</span></div><div class="case-info"><div class="case-type" data-en="CASE 03 · BOOTCAMPS">案例 03 · 训练营</div><h3 data-en="University &amp; judicial AI bootcamps">高校与司法 AI 训练营</h3><p data-en="4 university cohorts (~&lt;b class=&quot;count&quot; data-to=&quot;200&quot;&gt;200&lt;/b&gt; people) and 3 judicial cohorts (~&lt;b class=&quot;count&quot; data-to=&quot;100&quot;&gt;100&lt;/b&gt; people), with coaching and final reviews.">高校 4 期近 <b class="count" data-to="200">200</b> 人、司法 3 期近 <b class="count" data-to="100">100</b> 人，带练、点评并结营验收。</p></div></article>
-          <article class="case-card" data-case="4"><div class="case-media" data-image="" data-video=""><span class="media-ph">图片/视频待替换</span></div><div class="case-info"><div class="case-type" data-en="CASE 04 · SYSTEM DELIVERY">案例 04 · 系统落地</div><h3 data-en="AI content-review &amp; risk-control system">智能审核与风控系统</h3><p data-en="Replaced much of the manual review work, cutting monthly cost by about &lt;b class=&quot;count&quot; data-to=&quot;87.5&quot; data-dec=&quot;1&quot; data-suffix=&quot;%&quot;&gt;87.5%&lt;/b&gt;.">替代大量人工审核，月度成本下降约 <b class="count" data-to="87.5" data-dec="1" data-suffix="%">87.5%</b>。</p></div></article>
-        </div>
+        <!-- 案例媒体：在 assets/js/site.js 的 CASE_MEDIA 中按案例编号填 image（图片路径）或 video（mp4 路径），也可直接在 .case-media 上填 data-image / data-video。路径相对 dist/。 -->
+        <div class="case-grid"><article class="case-card c1" data-case="1"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="500" data-dec="0" data-suffix="+">500+</b><span data-en="repair cases">维修案例</span></div><div class="case-type" data-en="CASE 01 · AI AGENT">案例 01 · 智能体定制</div><h3 data-en="Maintenance agent for a property services company">某物业服务企业的维修智能体</h3><p data-en="A privately deployed agent with 500+ repair cases and 103 standards that drafts repair plans and traces liability.">私有化部署，录入 500+ 维修案例和 103 条规范，自动给出维修方案并追溯责任。</p></div></article><article class="case-card c2" data-case="2"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="60" data-dec="0" data-suffix="">60</b><span data-en="participants">名学员</span></div><div class="case-type" data-en="CASE 02 · IN-HOUSE TRAINING">案例 02 · 企业内训</div><h3 data-en="Generative AI tools workshop for a real-estate group">某房地产集团的生成式 AI 工具实战课</h3><p data-en="A half-day hands-on session for about 60 people across marketing, design, copywriting and management.">半天实战课，覆盖市场、设计、文案和管理层约 60 名学员。</p></div></article><article class="case-card c3" data-case="3"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="7" data-dec="0" data-suffix="">7</b><span data-en="cohorts">期训练营</span></div><div class="case-type" data-en="CASE 03 · BOOTCAMPS">案例 03 · 训练营</div><h3 data-en="University &amp; judicial AI bootcamps">高校与司法 AI 训练营</h3><p data-en="4 university cohorts (~200 people) and 3 judicial cohorts (~100 people), with coaching and final reviews.">高校 4 期近 200 人、司法 3 期近 100 人，带练、点评并结营验收。</p></div></article><article class="case-card c4" data-case="4"><div class="case-media" data-image="" data-video=""><span class="media-ph" data-en="IMAGE / VIDEO PLACEHOLDER">图片/视频待替换</span></div><div class="case-info"><div class="case-metric"><b class="count" data-to="87.5" data-dec="1" data-suffix="%">87.5%</b><span data-en="lower monthly cost">月度成本下降</span></div><div class="case-type" data-en="CASE 04 · SYSTEM DELIVERY">案例 04 · 系统落地</div><h3 data-en="AI content-review &amp; risk-control system">智能审核与风控系统</h3><p data-en="Replaced much of the manual review work, cutting monthly cost by about 87.5%.">替代大量人工审核，月度成本下降约 87.5%。</p></div></article></div>
       </div>
     </section>
 
-    <section class="info" id="process" data-section="process">
+    <section class="info process" id="process" data-section="process">
       <span class="node" data-node="process" style="top:118px"><span class="node-label">03 · PROCESS</span></span>
       <div class="wrap">
         <div class="kicker">PROCESS · 合作流程</div><h2 class="sec-title reveal" data-en="How we work">合作流程</h2>
-        <ol class="timeline" id="timeline"><span class="tl-fill" id="tl-fill"></span><li class="tl-step"><span class="tl-num">01</span><b data-en="Discovery call">前期沟通</b><small data-en="Understand your goals">了解业务现状与目标</small></li><li class="tl-step"><span class="tl-num">02</span><b data-en="Use-case assessment">场景判断</b><small data-en="Pick the right use cases">筛选值得做的 AI 场景</small></li><li class="tl-step"><span class="tl-num">03</span><b data-en="Solution breakdown">方案拆解</b><small data-en="Break into modules">拆成可执行的模块</small></li><li class="tl-step"><span class="tl-num">04</span><b data-en="Scope sign-off">范围确认</b><small data-en="Agree scope and timeline">确认内容、周期与报价</small></li><li class="tl-step"><span class="tl-num">05</span><b data-en="Delivery">交付执行</b><small data-en="Train or build as planned">培训或开发按计划落地</small></li><li class="tl-step"><span class="tl-num">06</span><b data-en="Review &amp; iterate">复盘优化</b><small data-en="Follow up and improve">跟进使用并持续改进</small></li></ol>
+        <div class="proc-panel"><div class="tl-track"><span class="tl-fill" id="tl-fill"></span></div><ol class="timeline" id="timeline"><li class="tl-step"><span class="tl-big" aria-hidden="true">01</span><span class="tl-num">01</span><b data-en="Discovery call">前期沟通</b><small data-en="Understand your goals">了解业务现状与目标</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">02</span><span class="tl-num">02</span><b data-en="Use-case assessment">场景判断</b><small data-en="Pick the right use cases">筛选值得做的 AI 场景</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">03</span><span class="tl-num">03</span><b data-en="Solution breakdown">方案拆解</b><small data-en="Break into modules">拆成可执行的模块</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">04</span><span class="tl-num">04</span><b data-en="Scope sign-off">范围确认</b><small data-en="Agree scope and timeline">确认内容、周期与报价</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">05</span><span class="tl-num">05</span><b data-en="Delivery">交付执行</b><small data-en="Train or build as planned">培训或开发按计划落地</small></li><li class="tl-step"><span class="tl-big" aria-hidden="true">06</span><span class="tl-num">06</span><b data-en="Review &amp; iterate">复盘优化</b><small data-en="Follow up and improve">跟进使用并持续改进</small></li></ol></div>
         <div class="notes"><div class="note" data-en="&lt;b&gt;Before training&lt;/b&gt;, we interview your team, write a custom syllabus and set up the practice environment. We don't use generic slides."><b>培训前</b>，我们会先做访谈调研，按需定制课纲，准备好练习环境，不用通用课件。</div><div class="note" data-en="&lt;b&gt;After training&lt;/b&gt;, we help with assignments, review the results and follow up on how the tools are used."><b>培训后</b>，我们会辅导作业、评选成果，并跟进实际使用情况。</div></div>
       </div>
     </section>

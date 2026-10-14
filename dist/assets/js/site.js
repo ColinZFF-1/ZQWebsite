@@ -11,9 +11,12 @@
   const i18n=$$('[data-en]');i18n.forEach(el=>el.dataset.zh=el.innerHTML);
   const zhTitle=document.title,enTitle='ZHAOQIAO AI — Connecting AI to real work';
   function setLang(l){i18n.forEach(el=>el.innerHTML=l==='en'?el.dataset.en:el.dataset.zh);root.lang=l==='en'?'en':'zh-CN';document.title=l==='en'?enTitle:zhTitle;$('#lang-toggle').textContent=l==='en'?'中文':'EN';try{localStorage.setItem('zq-lang',l)}catch(e){}
-    if(l==='zh')splitHero();requestAnimationFrame(()=>{hasGsap?ScrollTrigger.refresh():layoutLine();});}
+    fitTitle();if(l==='zh')splitHero();requestAnimationFrame(()=>{hasGsap?ScrollTrigger.refresh():layoutLine();});}
   $('#lang-toggle').addEventListener('click',()=>setLang(root.lang==='en'?'zh':'en'));
 
+  /* ---------- hero title: one line, fitted to width ---------- */
+  function fitTitle(){const h=$('#hero-title');if(!h)return;h.style.fontSize='100px';const w=h.scrollWidth,avail=Math.min(h.parentElement.clientWidth,1180)*(innerWidth>900?.92:.96);
+    const max=root.lang==='en'?(innerWidth>900?60:40):(innerWidth>900?84:40);h.style.fontSize=Math.max(12,Math.min(max,100*avail/w)).toFixed(1)+'px';}
   /* ---------- hero title split ---------- */
   function splitHero(){const h=$('#hero-title');if(root.lang==='en')return;const t=h.textContent;h.setAttribute('aria-label',t);
     h.innerHTML=[...t].map(c=>c==='｜'?'<span class="ch bar" aria-hidden="true">｜</span>':c===' '?'<span class="ch" aria-hidden="true">&nbsp;</span>':'<span class="ch" aria-hidden="true">'+c+'</span>').join('');}
@@ -51,10 +54,10 @@
 
   /* ---------- nav state ---------- */
   const nav=$('#site-nav');
-  function navState(){const y=innerHeight*0.08;let dark=false;$$('[data-dark]').forEach(s=>{const r=s.getBoundingClientRect();if(r.top<=y&&r.bottom>y)dark=true;});nav.classList.toggle('is-dark',dark);nav.classList.toggle('scrolled',scrollY>20);}
+  function navState(){if(nav.classList.contains('always-dark')){nav.classList.toggle('scrolled',scrollY>20);return;}const y=innerHeight*0.08;let dark=false;$$('[data-dark]').forEach(s=>{const r=s.getBoundingClientRect();if(r.top<=y&&r.bottom>y)dark=true;});nav.classList.toggle('is-dark',dark);nav.classList.toggle('scrolled',scrollY>20);}
 
   /* ---------- connecting line ---------- */
-  const svg=$('#zq-line'),base=$('#zq-base'),draw=$('#zq-draw'),tip=$('#zq-tip');
+  const svg=$('#zq-line'),base=$('#zq-base'),draw=$('#zq-draw'),halo=$('#zq-halo'),tip=$('#zq-tip');
   let samples=[],total=0,nodes=[];
   function docPos(el){const r=el.getBoundingClientRect();return{x:r.left+scrollX+r.width/2,y:r.top+scrollY+r.height/2,top:r.top+scrollY,bottom:r.bottom+scrollY};}
   function layoutLine(){
@@ -68,8 +71,8 @@
     let d='M'+sx+' '+sy+' C'+(sx-30)+' '+(sy+20)+' '+gx+' '+(sy-10)+' '+gx+' '+(win.bottom+60);
     nodes.forEach(n=>{d+=' L'+gx+' '+n.y;});
     const bl=$('#contact-btn').getBoundingClientRect().left+scrollX-8;d+=' L'+gx+' '+(btn.y-70)+' C'+gx+' '+btn.y+' '+(gx+40)+' '+btn.y+' '+(gx+90)+' '+btn.y+' L'+bl+' '+btn.y;
-    base.setAttribute('d',d);draw.setAttribute('d',d);
-    total=draw.getTotalLength();draw.style.strokeDasharray=total;samples=[];
+    base.setAttribute('d',d);draw.setAttribute('d',d);halo.setAttribute('d',d);
+    total=draw.getTotalLength();draw.style.strokeDasharray=total;halo.style.strokeDasharray=total;samples=[];
     for(let l=0;l<=total;l+=12){const p=draw.getPointAtLength(l);samples.push([l,p.y,p.x]);}
     updateLine();
   }
@@ -78,7 +81,7 @@
     if(!reduce){len=0;for(const s of samples){if(s[1]<=target)len=s[0];else break;}
       // ensure monotonic: line only goes down the page, so the last sample under target is fine
     }
-    draw.style.strokeDashoffset=total-len;const p=draw.getPointAtLength(Math.max(0,len));tip.setAttribute('cx',p.x);tip.setAttribute('cy',p.y);
+    draw.style.strokeDashoffset=total-len;halo.style.strokeDashoffset=total-len;const p=draw.getPointAtLength(Math.max(0,len));tip.setAttribute('cx',p.x);tip.setAttribute('cy',p.y);
     nodes.forEach(n=>n.el.classList.toggle('on',n.y<=p.y+2||reduce));
     $('#contact-btn').classList.toggle('lit',len>=total-4);
   }
@@ -105,11 +108,11 @@
   /* ---------- init ---------- */
   splitHero();
   const lang=(()=>{try{return new URLSearchParams(location.search).get('lang')||localStorage.getItem('zq-lang')||'zh'}catch(e){return 'zh'}})();
-  if(lang==='en')setLang('en');
+  if(lang==='en')setLang('en');fitTitle();if(document.fonts)document.fonts.ready.then(()=>{fitTitle();hasGsap&&ScrollTrigger.refresh();});addEventListener('resize',fitTitle);
 
   if(!hasGsap||reduce){
     // static fallback: stacked layout, fully drawn line, final numbers
-    setCap(0);$$('.count').forEach(countUp);heroLinks();
+    setCap(0);$$('.count').forEach(countUp);$$('.tl-step').forEach(e=>e.classList.add('lit'));heroLinks();
     addEventListener('load',layoutLine);addEventListener('resize',()=>{heroLinks();layoutLine();});
     addEventListener('scroll',()=>{navState();updateLine();},{passive:true});navState();layoutLine();
     return;
@@ -137,7 +140,9 @@
   $$('.reveal').forEach(h=>gsap.from(h,{yPercent:60,opacity:0,clipPath:'inset(0 0 100% 0)',duration:1.1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}}));
   gsap.utils.toArray('.case-card,.model,.note').forEach(el=>gsap.from(el,{y:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 92%'}}));
   gsap.from('.tl-step',{y:24,opacity:0,stagger:.08,duration:.9,ease:'expo.out',scrollTrigger:{trigger:'#timeline',start:'top 85%'}});
-  if(desktop())gsap.from('#tl-fill',{scaleX:0,ease:'none',scrollTrigger:{trigger:'#timeline',start:'top 80%',end:'top 40%',scrub:true}});
+  {const fill=$('#tl-fill'),stepsEl=$$('.tl-step'),vert=!desktop();fill.style.transformOrigin=vert?'top':'left';
+    gsap.fromTo(fill,vert?{scaleY:0}:{scaleX:0},{...(vert?{scaleY:1}:{scaleX:1}),ease:'none',scrollTrigger:{trigger:'.proc-panel',start:vert?'top 70%':'top 75%',end:vert?'bottom 60%':'top 25%',scrub:true,
+      onUpdate:st=>stepsEl.forEach((el,k)=>el.classList.toggle('lit',st.progress>=k/(stepsEl.length-1)-0.02))}});}
   $$('.cases .count').forEach(el=>ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>countUp(el)}));
 
   // capabilities storytelling

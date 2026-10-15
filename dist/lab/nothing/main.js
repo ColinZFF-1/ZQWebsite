@@ -17,9 +17,9 @@ const cv=$('#cv'),K=['agent','tools','writing','marketing'];
 function sel(i){const c=CAPS[i];$$('.slot').forEach((s,k)=>{s.classList.toggle('sel',k===i);s.setAttribute('aria-pressed',k===i)});
  const ro=$('.readout');ro.classList.remove('swap');void ro.offsetWidth;ro.classList.add('swap');
  $('#ct').textContent=c.title;$('#cb').textContent=c.body;$('#ci').innerHTML=c.inc.map(s=>'<li>'+s+'</li>').join('');$('#cd').textContent=c.deliv;
- cv.poster='../../assets/scene-'+K[i]+'.webp';cv.src='../../assets/videos/capability-'+K[i]+'.mp4';if(!reduce)cv.play().catch(()=>{});}
+ cv.alt=c.title;if(!cv.src.endsWith('cap'+(i+1)+'.webp')){cv.classList.add('sw');setTimeout(()=>{cv.src='img/cap'+(i+1)+'.webp';cv.onload=()=>cv.classList.remove('sw')},reduce?0:200)}}
 $$('.slot').forEach((s,i)=>s.addEventListener('click',()=>sel(i)));
-// lazy: only load video when panel visible
+// init screen when panel visible
 let first=true;new IntersectionObserver(es=>{if(es[0].isIntersecting&&first){first=false;sel(0)}},{threshold:.2}).observe($('#caps'));
 $('#ct').textContent=CAPS[0].title;$('#cb').textContent=CAPS[0].body;$('#ci').innerHTML=CAPS[0].inc.map(s=>'<li>'+s+'</li>').join('');$('#cd').textContent=CAPS[0].deliv;
 // process keys -> LCD

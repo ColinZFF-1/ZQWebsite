@@ -27,9 +27,10 @@ details ul{margin:10px 0}details li{font-size:14.5px;padding-left:18px;position:
 .cases-h{padding-right:var(--pad);display:flex;justify-content:space-between;align-items:baseline;gap:20px}.cases-h p{color:var(--mut);font-size:14px}
 .rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,30%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--pad) 20px 0;scrollbar-width:thin}
 .cs{scroll-snap-align:start;background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.cs-img{aspect-ratio:16/10;overflow:hidden}.cs-img img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}.cs:hover .cs-img img{transform:scale(1.03)}
+.cs-img{aspect-ratio:16/10;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;border-radius:12px;margin:10px 10px 0}.cs-img.sage{background:var(--sage)}.cs-img.sand{background:var(--sand)}.cs-img.sky{background:var(--sky)}.cs-img.clay{background:var(--clay)}.cs-big{font-size:clamp(48px,4.6vw,72px);font-weight:800;line-height:1;color:var(--green);letter-spacing:-.02em;transition:transform .6s cubic-bezier(.2,.8,.2,1)}.cs:hover .cs-big{transform:translateY(-4px)}.cs-u{font-size:15px;color:var(--ink);margin-top:6px}
+.cap-img{margin:-28px -28px 22px;aspect-ratio:16/9;overflow:hidden;border-radius:16px 16px 0 0}
 .cs-t{padding:20px 22px 24px}.cs-k{font-size:13px;color:var(--mut)}.cs-t h3{font-size:18px;font-weight:700;line-height:1.4;margin:4px 0 8px}.cs-t p{font-size:14.5px}
-.cs-n{margin-top:14px;color:var(--green)}.cs-n b{font-size:26px;font-weight:800}
+.cs-n{display:none}.cs-n b{font-size:26px;font-weight:800}
 .process{padding:clamp(56px,7vw,104px) var(--pad)}.pw{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start}
 .tl li{display:grid;grid-template-columns:28px 1fr;gap:16px;position:relative;padding-bottom:26px}.tl li:not(:last-child)::before{content:"";position:absolute;left:13px;top:22px;bottom:0;width:2px;background:#d9cfbf}
 .dot{width:28px;height:28px;border-radius:50%;background:var(--bg);border:2px solid var(--green);position:relative;z-index:1;transition:background .5s}.tl li.in .dot{background:var(--green)}

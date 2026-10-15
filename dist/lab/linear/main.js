@@ -1,11 +1,10 @@
 (()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,K=['agent','tools','writing','marketing'];
-const v=$('#v');let loaded=false;
+
 function sel(i,play){$$('.it').forEach((b,k)=>{b.classList.toggle('sel',k===i);b.setAttribute('aria-selected',k===i)});const c=CAPS[i];
  $('#ck').textContent=c.kicker;$('#ctt').textContent=c.title;$('#cb').textContent=c.body;$('#ci').innerHTML=c.inc.map(s=>'<li>'+s+'</li>').join('');$('#cd').textContent=c.deliv;
- const x=$('#ctx');x.classList.remove('swap');void x.offsetWidth;x.classList.add('swap');v.poster='../../assets/scene-'+K[i]+'.webp';if(play||loaded){loaded=true;v.src='../../assets/videos/capability-'+K[i]+'.mp4';if(!reduce)v.play().catch(()=>{})}}
+ const x=$('#ctx');x.classList.remove('swap');void x.offsetWidth;x.classList.add('swap');$$('.mk').forEach((m,k)=>m.classList.toggle('on',k===i))}
 $$('.it').forEach((b,i)=>{b.addEventListener('click',()=>sel(i,true));b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();($$('.it')[i+1]||b).focus()}if(e.key==='ArrowUp'){e.preventDefault();($$('.it')[i-1]||b).focus()}})});
 $$('[data-cap]').forEach(a=>a.addEventListener('click',()=>sel(+a.dataset.cap,true)));sel(0,false);
-new IntersectionObserver(es=>{if(es[0].isIntersecting&&!loaded){sel($$('.it').findIndex(b=>b.classList.contains('sel')),true)}},{threshold:.3}).observe($('#caps'));
 // active section in sidebar
 const secs=$$('.sec');new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)$$('.snav a').forEach(a=>a.classList.toggle('on',a.dataset.s===x.target.id))}),{rootMargin:'-45% 0px -50% 0px'}).observe&&secs.forEach(s=>new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)$$('.snav a').forEach(a=>a.classList.toggle('on',a.dataset.s===x.target.id))}),{rootMargin:'-45% 0px -50% 0px'}).observe(s));
 // process: steps tick as section scrolls into view

@@ -1,0 +1,6 @@
+(()=>{const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const s=b.dataset.copy;const done=()=>{if(!t)return;t.textContent='微信号已复制';t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800)};const fb=()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(s).then(done,fb);else fb()}))})();
+(()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function sel(i){$$('.mod').forEach((m,k)=>{m.classList.toggle('on',k===i);m.setAttribute('aria-pressed',k===i)});const c=CAPS[i];$('#out').innerHTML='<h3>'+c.title+'</h3><div><p>'+c.body+'</p><p class="dv">交付：'+c.deliv+'</p></div><ul>'+c.inc.map(s=>'<li>'+s+'</li>').join('')+'</ul>'}
+$$('.mod').forEach((m,i)=>m.addEventListener('click',()=>sel(i)));sel(0);
+function st(i){$$('.pad').forEach((p,k)=>p.classList.toggle('on',k===i));$('#po').innerHTML='<b>STEP '+(i+1)+'/6</b><h3>'+STEPS[i][0]+'</h3><p>'+STEPS[i][1]+'</p>'}
+$$('.pad').forEach((p,i)=>p.addEventListener('click',()=>st(i)));st(0);})();

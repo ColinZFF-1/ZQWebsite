@@ -1,0 +1,5 @@
+(()=>{const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const s=b.dataset.copy;const done=()=>{if(!t)return;t.textContent='微信号已复制';t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800)};const fb=()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(s).then(done,fb);else fb()}))})();
+(()=>{const nd=[...document.querySelectorAll('.nd')],dp=[...document.querySelectorAll('.dp')];let cur=0,hold=false;
+function on(i){cur=i;nd.forEach((n,k)=>n.classList.toggle('on',k===i));dp.forEach((d,k)=>d.classList.toggle('on',k===i))}
+dp.forEach((d,i)=>{d.addEventListener('mouseenter',()=>{hold=true;on(i)});d.addEventListener('mouseleave',()=>hold=false)});nd.forEach((n,i)=>n.addEventListener('mouseenter',()=>on(i)));on(0);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(!hold&&!document.hidden)on((cur+1)%4)},2600);})();

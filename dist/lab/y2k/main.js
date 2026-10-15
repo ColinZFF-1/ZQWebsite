@@ -1,0 +1,10 @@
+(()=>{const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const s=b.dataset.copy;const done=()=>{if(!t)return;t.textContent='微信号已复制';t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800)};const fb=()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()};if(navigator.clipboard&&isSecureContext)navigator.clipboard.writeText(s).then(done,fb);else fb()}))})();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;(()=>{const $$=s=>[...document.querySelectorAll(s)];let z=4;
+$$('.tab').forEach((t,i)=>t.addEventListener('click',()=>{const w=t.closest('.wb');w.querySelectorAll('.tab').forEach((x,k)=>{x.classList.toggle('on',k===i);x.setAttribute('aria-selected',k===i)});w.querySelectorAll('.pane').forEach((p,k)=>p.classList.toggle('on',k===i))}));
+const focus=w=>{$$('.win').forEach(x=>x.classList.remove('top'));w.classList.add('top');w.style.zIndex=++z};
+$$('.win').forEach(w=>{w.addEventListener('pointerdown',()=>focus(w));const bar=w.querySelector('.tbar');let sx,sy,ox=0,oy=0,drag=false;
+ bar.addEventListener('pointerdown',e=>{if(innerWidth<=900)return;drag=true;sx=e.clientX-ox;sy=e.clientY-oy;bar.setPointerCapture(e.pointerId)});
+ bar.addEventListener('pointermove',e=>{if(!drag)return;ox=e.clientX-sx;oy=e.clientY-sy;w.style.transform=`translate(${ox}px,${oy}px)`});
+ bar.addEventListener('pointerup',()=>drag=false)});
+focus($$('.win')[0]);$$('a[href^="#w-"]').forEach(a=>a.addEventListener('click',()=>{const w=document.querySelector(a.getAttribute('href'));if(w)focus(w)}));
+const ck=document.getElementById('clk'),tick=()=>{const d=new Date();ck.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')};tick();setInterval(tick,15000);})();

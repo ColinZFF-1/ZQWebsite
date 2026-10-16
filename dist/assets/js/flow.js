@@ -19,21 +19,20 @@
   // phase helpers (explicit delays; never play in reverse, so it's always out -> move -> in)
   const textOut=sc=>outEls(sc).map(e=>[e,[{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-10px)'}],{duration:OUT,easing:IN_E}]);
   const textIn=(sc,at)=>inEls(sc).map((e,i)=>[e,[{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:440,easing:EXPO,delay:at+Math.min(i,8)*45}]);
-  function run(list){return Promise.all(list.map(([el,kf,opt])=>{const a=el.animate(kf,Object.assign({duration:600,easing:'linear',fill:'both'},opt));return a.finished.then(()=>a);}));}
   const rect=el=>el.getBoundingClientRect();
-  function morphKF(r,expand){const W=innerWidth,H=innerHeight,sx=r.width/W,sy=r.height/H,s=Math.max(sx,sy),k0=expand?1:1.06,P=expand?0:.24;
-    const at=u=>{const kx=k0+(sx-k0)*u,ky=k0+(sy-k0)*u,X=(1-k0)*W/2,Y=(1-k0)*H/2;return {o:`translate(${X+(r.left-X)*u}px,${Y+(r.top-Y)*u}px) scale(${kx},${ky})`,i:`scale(${(k0+(s-k0)*u)/kx},${(k0+(s-k0)*u)/ky})`};};
-    const outer=frames((e,t)=>{if(!expand&&t<=P){const k=1+(k0-1)*q(t/P);return {transform:`translate(${(1-k)*W/2}px,${(1-k)*H/2}px) scale(${k})`};}
-      const u=expand?1-q(t):q((t-P)/(1-P));return {transform:at(u).o};},28,t=>t);
-    const inner=frames((e,t)=>{if(!expand&&t<=P)return {transform:'none'};const u=expand?1-q(t):q((t-P)/(1-P));return {transform:at(u).i};},28,t=>t);
-    return [outer,inner];}
-  // hero -> cap1: text out, hero video pushes in and lands in cap1 frame, cap1 video takes over, text in
-  function heroToCap(a,b){const bg=$('.hero-bg',a),m=$('.cap-media',b),[o,i]=morphKF(rect(m),false),T=OUT-60,M=640;
-    return [...textOut(a),[bg,o,{delay:T,duration:M}],[$('video',bg),i,{delay:T,duration:M}],
+  /* Morph only the .hero-bg wrapper — never scale the <video> (Chrome drops video texture on non-uniform scale + will-change). */
+  function morphKF(r,expand){const W=innerWidth,H=innerHeight,sx=r.width/W,sy=r.height/H,k0=expand?1:1.06,P=expand?0:.24;
+    const at=u=>{const kx=k0+(sx-k0)*u,ky=k0+(sy-k0)*u,X=(1-k0)*W/2,Y=(1-k0)*H/2;return {transform:`translate(${X+(r.left-X)*u}px,${Y+(r.top-Y)*u}px) scale(${kx},${ky})`};};
+    return frames((e,t)=>{if(!expand&&t<=P){const k=1+(k0-1)*q(t/P);return {transform:`translate(${(1-k)*W/2}px,${(1-k)*H/2}px) scale(${k})`};}
+      const u=expand?1-q(t):q((t-P)/(1-P));return at(u);},28,t=>t);}
+  // hero -> cap1: text out, hero-bg pushes into cap1 frame, cap1 video takes over, text in
+  function heroToCap(a,b){const bg=$('.hero-bg',a),m=$('.cap-media',b),o=morphKF(rect(m),false),T=OUT-60,M=640;
+    return [...textOut(a),[bg,o,{delay:T,duration:M}],
       [m,[{opacity:0},{opacity:1}],{delay:T+M-40,duration:160}],...textIn(b,T+200)];}
-  // cap1 -> hero: text out, cap1 frame expands into the full-bleed hero video, hero text in
-  function capToHero(a,b){const bg=$('.hero-bg',b),[o,i]=morphKF(rect($('.cap-media',a)),true),T=OUT-40,M=620;
-    return [...textOut(a),[bg,o,{delay:T,duration:M}],[$('video',bg),i,{delay:T,duration:M}],[bg,[{opacity:0},{opacity:1}],{delay:T,duration:150}],
+  // cap1 -> hero: text out, hero-bg expands from cap frame (stay visible — no opacity:0 hold across delay)
+  function capToHero(a,b){const bg=$('.hero-bg',b),o=morphKF(rect($('.cap-media',a)),true),T=OUT-40,M=620;
+    bg.style.opacity='';bg.style.transform='';
+    return [...textOut(a),[bg,o,{delay:T,duration:M}],
       ...textIn(b,T+260)];}
   // cap <-> cap: old video pushes toward camera and is gone before the new one grows out of its frame
   function capSwap(a,b){const ma=$('.cap-media',a),mb=$('.cap-media',b),ra=rect(ma),rb=rect(mb);
@@ -41,7 +40,6 @@
     return [...textOut(a),[ma,[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(1.12)'}],{duration:T,easing:IN_E}],
       [mb,[{opacity:0,offset:0},{opacity:1,offset:.18}],{delay:T,duration:620,easing:'linear'}],
       [mb,frames(e=>({transform:`translate(${dx*(1-e)}px,${dy*(1-e)}px) scale(${.8+.2*e})`}),20,xo),{delay:T,duration:620}],
-      [$('video',mb),[{transform:'scale(1.14)'},{transform:'scale(1)'}],{delay:T,duration:700,easing:EXPO}],
       ...textIn(b,T+80)];}
   // dolly: old content out fast, camera settles from 1.05, new content assembles
   function dolly(a,b){return [[a,[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.985)'}],{duration:OUT,easing:IN_E}],
@@ -56,12 +54,34 @@
     if(Math.abs(i-j)===1&&Math.min(i,j)>=1&&Math.max(i,j)<=4)return {list:capSwap(a,b),top:b};
     return {list:dolly(a,b),top:b};}
 
+  function reviveHero(){
+    const bg=$('.hero-bg'), hv=$('.hero-video');
+    if(bg){bg.style.opacity='';bg.style.transform='';}
+    if(!hv)return;
+    hv.style.transform='none';hv.style.opacity='';
+    const t=hv.currentTime||0;
+    const play=()=>hv.play().catch(()=>{});
+    play();
+    try{
+      // Harmless nudge so Chrome re-attaches the video texture if the frame went blank
+      if(hv.readyState>=2){hv.currentTime=Math.min(t+0.001, Math.max(0,(hv.duration||1)-0.05));}
+    }catch(e){}
+    play();
+  }
+
   function go(j,instant){j=Math.max(0,Math.min(S.length-1,j));if(busy||j===cur)return;const i=cur,a=S[i],b=S[j];
-    if(instant){a.classList.remove('cur');b.classList.add('cur');cur=j;window.ZQactivate&&ZQactivate(b);return;}
+    if(instant){a.classList.remove('cur');b.classList.add('cur');cur=j;window.ZQactivate&&ZQactivate(b);if(b.classList.contains('hero'))reviveHero();return;}
     busy=true;b.classList.add('cur');const p=plan(i,j);S.forEach(s=>s.style.zIndex='');p.top.style.zIndex=3;(p.top===b?a:b).style.zIndex=2;
     window.ZQ_BUSY=true;root.classList.add('busy');
     setTimeout(()=>{window.ZQactivate&&ZQactivate(b);},reduce?120:OUT);
-    run(p.list).then(anims=>{a.classList.remove('cur');anims.forEach(x=>x.cancel());S.forEach(s=>s.style.zIndex='');window.ZQ_BUSY=false;root.classList.remove('busy');cur=j;busy=false;});
+    const anims=p.list.map(([el,kf,opt])=>el.animate(kf,Object.assign({duration:600,easing:'linear',fill:'both'},opt)));
+    Promise.all(anims.map(x=>x.finished.catch(()=>null))).finally(()=>{
+      a.classList.remove('cur');
+      anims.forEach(x=>{try{x.cancel();}catch(e){}});
+      S.forEach(s=>s.style.zIndex='');
+      window.ZQ_BUSY=false;root.classList.remove('busy');cur=j;busy=false;
+      if(b.classList.contains('hero')||a.classList.contains('hero'))reviveHero();
+    });
     window.__zqLast=performance.now();}
   window.ZQgo=go;
 

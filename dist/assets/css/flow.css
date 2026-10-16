@@ -5,7 +5,7 @@ html.flow .screen.cur{visibility:visible}
 html.flow .rv{opacity:1;transform:none;transition:none}
 html.flow .mask{clip-path:none;transition:none}
 html.flow .hero-bg{overflow:hidden;transform-origin:0 0;will-change:transform}
-html.flow .hero-bg video{transform-origin:50% 50%;will-change:transform}
+html.flow .hero-bg video{transform:none!important;will-change:auto;backface-visibility:visible}
 html.flow .cap-media{will-change:transform,opacity;transform-origin:50% 50%}
 html.flow .cap-media video{transform-origin:50% 50%}
 html.flow .wipe{display:none}

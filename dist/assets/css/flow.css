@@ -10,7 +10,13 @@ html.flow .cap-media{will-change:transform,opacity;transform-origin:50% 50%}
 html.flow .cap-media video{transform-origin:50% 50%}
 html.flow .wipe{display:none}
 
-
-
-
-html.flow.busy .case-card,html.flow.busy .proc,html.flow.busy .nav,html.flow.busy .btn-ghost,html.flow.busy .cap-media .idx{backdrop-filter:none;-webkit-backdrop-filter:none}
+/* Off-screen glass panels must not composite blur while hidden (leaks frosted band onto caps).
+   Blur only on the current screen; nav keeps its blur except during .busy transitions. */
+html.flow .proc,
+html.flow .case-card,
+html.flow .contact-main{backdrop-filter:none;-webkit-backdrop-filter:none}
+html.flow .screen.cur .proc{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html.flow .screen.cur .case-card{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html.flow .screen.cur .contact-main{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html.flow.busy .nav,html.flow.busy .btn-ghost,html.flow.busy .cap-media .idx,
+html.flow.busy .screen.cur .proc,html.flow.busy .screen.cur .case-card,html.flow.busy .screen.cur .contact-main{backdrop-filter:none;-webkit-backdrop-filter:none}

@@ -23,7 +23,8 @@
     const loadHero=()=>{if(loaded)return;loaded=true;const mob=innerWidth<=700||matchMedia('(max-width:700px)').matches;
       hv.src=hv.dataset[mob?'srcMobile':'srcDesktop']||hv.dataset.srcDesktop;hv.load();hv.play().catch(()=>{});};
     const keep=()=>{if(!loaded)return;if(hv.paused&&!document.hidden)hv.play().catch(()=>{});};
-    hv.addEventListener('ended',()=>{hv.currentTime=0;keep();});hv.addEventListener('pause',()=>setTimeout(keep,200));
+    /* native hv.loop handles wrap; avoid currentTime=0 seek hitch on ended */
+    hv.addEventListener('pause',()=>setTimeout(keep,200));
     document.addEventListener('visibilitychange',keep);
     const kick=()=>{loadHero();['pointerdown','keydown','touchstart','wheel'].forEach(ev=>removeEventListener(ev,kick));};
     ['pointerdown','keydown','touchstart','wheel'].forEach(ev=>addEventListener(ev,kick,{passive:true,once:true}));
